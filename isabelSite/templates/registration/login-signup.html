@@ -1,0 +1,9 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <p>Please Login or Signup</p>
+  <a href="{% url 'login' %}">Log In</a> |
+  <a href="{% url 'signUp' %}">Sign Up</a>
+{% endblock %}
