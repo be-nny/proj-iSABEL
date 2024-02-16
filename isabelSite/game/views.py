@@ -1,27 +1,53 @@
+from django.contrib.auth import logout
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.conf import settings
+from django.shortcuts import redirect
+
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+
+from .forms import CustomUserCreationForm
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Index page")
-
-def login(request):
-    return HttpResponse("Login page")
-
-def signUp(request):
-    return HttpResponse("Sign up page")
+class SignUp(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
 
 def scan(request):
-    return HttpResponse("Scan page")
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return render(request, "site/scan.html", {})
+
+def userNotLoggedIn(request):
+    logout(request)
+    return render(request, "registration/login-signup.html", {})
+
+def loginSignup(request):
+    return render(request, "registration/login-signup.html", {})
 
 def userMap(request):
-    return HttpResponse("Map page")
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return HttpResponse("Map page")
 
 def leaderboard(request):
-    return HttpResponse("Leaderboard page")
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return HttpResponse("Leaderboard page")
 
 def profile(request):
-    return HttpResponse("Profile page")
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return HttpResponse("Profile page")
 
 def about(request):
-    return HttpResponse("About page")
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return HttpResponse("About page")
