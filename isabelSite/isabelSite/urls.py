@@ -21,7 +21,7 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="registration/login-signup.html"), name="login-signup"),
+    path("", TemplateView.as_view(template_name="game/registration/login-signup.html"), name="login-signup"),
     path("admin/", admin.site.urls),
     path("game/", include('game.urls')),
     path("game/", include("django.contrib.auth.urls")),
