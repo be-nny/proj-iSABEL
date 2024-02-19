@@ -1,10 +1,13 @@
+<!DOCTYPE html>
+{% load static %}
+
 <html>
   <head>
     <title>Geolocation</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-    <link rel="stylesheet" href="{% static 'game/site/css/map.css' %}" />
-    <script type="module" src="/templates/site/scripts/map.js"></script>
+    <link rel="stylesheet" href="{% static 'styles/map.css' %}" />
+    <script type="module" src="{% static 'scripts/map.js' %}"></script>
   </head>
   <body>
     <div id="map"></div>
