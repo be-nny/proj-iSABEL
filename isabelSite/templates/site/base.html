@@ -1,13 +1,51 @@
 <!DOCTYPE html>
+{% load static %}
+
+
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>{% block title %}iSABEL{% endblock %}</title>
-</head>
-<body>
-  <main>
-    {% block content %}
-    {% endblock %}
-  </main>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}iSABEL{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'styles/navbar.css' %}" />
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    </head>
+    <body>
+        <main>
+        {% block content %}
+        {% endblock %}
+        </main>
+        <div class="wrapper">
+            <nav>
+                <input type="radio" name="tab" id="leaderboard">
+                <input type="radio" name="tab" id="map">
+                <input type="radio" name="tab" id="scan" checked>
+                <input type="radio" name="tab" id="profile">
+                <input type="radio" name="tab" id="about">
+
+                <label for="leaderboard" class="leaderboard">
+                    <a href="#"><i class="fas fa-home"></i>Leaderboard</a>
+                </label>
+
+                <label for="map" class="map">
+                    <a href="#"><i class="far fa-comment"></i>Map</a>
+                </label>
+
+                <label for="scan" class="scan">
+                    <a href="#"><i class="bi bi-camera"></i></a>
+                </label>
+
+                <label for="profile" class="profile">
+                    <a href="#"><i class="far fa-heart"></i>Profile</a>
+                </label>
+
+                <label for="about" class="about">
+                    <a href="#"><i class="far fa-user"></i>About</a>
+                </label>
+
+                <div class="tab">
+                </div>
+            </nav>
+        </div>
+    </body>
 </html>
