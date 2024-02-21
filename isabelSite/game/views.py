@@ -41,7 +41,7 @@ def userMap(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("Map page")
+        return render(request, "site/map.html", {})
 
 """
 View for the leaderboard page, if a user isn't logged in, they are redirected
