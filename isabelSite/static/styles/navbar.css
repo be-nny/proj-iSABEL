@@ -33,7 +33,7 @@
     border-top-right-radius: 75px;
 
     background: linear-gradient(45deg, #05abe0 0%, #74CB92 100%);
-    transition: 0.1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .wrapper nav {
@@ -60,7 +60,7 @@
 }
 
 .wrapper nav #leaderboard:checked~label.leaderboard a,
-.wrapper nav #map:checked~label.map a,
+.wrapper nav #rewards:checked~label.rewards a,
 .wrapper nav #scan:checked~label.scan a,
 .wrapper nav #profile:checked~label.profile a,
 .wrapper nav #about:checked~label.about a {
@@ -72,7 +72,7 @@
     margin: 0 7px;
 }
 
-.wrapper nav #map:checked~.tab {
+.wrapper nav #rewards:checked~.tab {
     left: 20%;
 }
 
