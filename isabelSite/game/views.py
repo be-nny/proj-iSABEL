@@ -50,7 +50,7 @@ def leaderboard(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("Leaderboard page")
+        return render(request, "site/leaderboard.html", {})
 
 """
 View for the users profile page, if a user isn't logged in, they are redirected
@@ -68,4 +68,4 @@ def about(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("About page")
+        return render(request, "site/about.html", {})
