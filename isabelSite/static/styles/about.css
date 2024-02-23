@@ -14,12 +14,50 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: white;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
+/*
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns
+}
 
+.child {
+  /* Specify grid area for the child element
+  grid-area: 1 / 1 / 2 / 2; /* Start row 1, start column 1, end row 2, end column 2
+}
+
+<editor-fold desc="Description">
+    .grid-container {
+        display: grid;
+        gap: 50px;
+    }
+
+    .item1 {
+      grid-row: 1 / 2;
+        grid-column: 1/2;
+    }
+</editor-fold>*/
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.right {
+  float: right;
+    padding: 10px;}
 .container {
     width: 80%;
     margin: 0 auto;
