@@ -9,5 +9,5 @@ def calculateAndUpdate(param1, param2, param3):
     return points
 
 @register.simple_tag
-def hello_user(name):
+def temp_points():
     return calculateAndUpdate(True, True, True)

@@ -6,7 +6,7 @@
 {% block content %}
 {% if user.is_authenticated %}
   Hello {{ user.username }}! <br>
-    Points: {% hello_user "Test" %}
+    Points: {% temp_points %}
   <p><a href="{% url 'logout_view' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>
