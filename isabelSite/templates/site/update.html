@@ -1,0 +1,16 @@
+{% extends "site/base.html" %}
+{% load my_tags %}
+
+{% block title %}Update Page{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hello {{ user.username }}! <br>
+    Points: {% hello_user "Test" %}
+  <p><a href="{% url 'logout_view' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a> |
+  <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+{% endblock %}
