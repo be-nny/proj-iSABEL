@@ -11,8 +11,11 @@
 </head>
 <body>
     <main>
-        {% block content %}
-        {% endblock %}
+        <div class="ctn">
+            <img class="banner-img" src="{% static 'assets/iSABEL%20logo%20(light).png' %}">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
 </body>
 </html>

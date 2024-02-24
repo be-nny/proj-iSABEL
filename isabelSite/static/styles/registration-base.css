@@ -11,12 +11,17 @@ body {
 .title {
     color: white;
     position: relative;
-    top: 100px;
     text-align: center;
     font-size: 45px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+input{
+    border-radius: 20px;
+    padding: 5px;
 }
 
 .subtitle{
@@ -43,19 +48,30 @@ body {
     margin: 0;
     position: absolute;
     top: 40%;
+    height: 50%;
     width: 60%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.login-from {
+    margin: 0;
+    position: absolute;
+    height: 50%;
+    width: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 .btn {
     background: linear-gradient(45deg, #05abe0 0%, #74CB92 100%);
     text-align: center;
     align-items: center;
     position: relative;
-    margin-top: 25%;
+    margin-top: 15%;
     width: 100%;
-    top: 50%;
     left: 50%;
     border-radius: 40px;
     font-size: 45px;

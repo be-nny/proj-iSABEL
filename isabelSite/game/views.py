@@ -37,11 +37,11 @@ def loginSignup(request):
 """
 View for the user map page, if a user isn't logged in, they are redirected
 """
-def userMap(request):
+def rewards(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, "site/map.html", {})
+        return render(request, "site/rewards.html", {})
 
 """
 View for the leaderboard page, if a user isn't logged in, they are redirected
@@ -59,7 +59,7 @@ def profile(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("Profile page")
+        return render(request, "site/profile.html", {})
 
 """
 View for the about page, if a user isn't logged in, they are redirected
