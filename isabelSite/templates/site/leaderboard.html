@@ -5,55 +5,64 @@
 {% block title %}Leaderboard{% endblock %}
 {% block content %}
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/about.css' %}" />
+    <head>
   <title>Leaderboard</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<div class="container mt-5">
-  <h1>Leaderboard</h1>
-
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Name</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Loop through leaderboard entries -->
-      {% for entry in leaderboard %}
-      <tr>
-        <td>{{ entry.rank }}</td>
-        <td>{{ entry.name }}</td>
-        <td>{{ entry.score }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <!-- Pagination -->
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      <li class="page-item {% if not leaderboard.has_previous %}disabled{% endif %}">
-        <a class="page-link" href="?page={{ leaderboard.previous_page_number }}" tabindex="-1">Previous</a>
-      </li>
-      {% for num in leaderboard.paginator.page_range %}
-      <li class="page-item {% if num == leaderboard.number %}active{% endif %}">
-        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-      </li>
-      {% endfor %}
-      <li class="page-item {% if not leaderboard.has_next %}disabled{% endif %}">
-        <a class="page-link" href="?page={{ leaderboard.next_page_number }}">Next</a>
-      </li>
-    </ul>
-  </nav>
+    </head>
+    <h1 class="title">Leaderboard</h1>
 
 </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Score</th>
+              <th>Streak</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <!-- Leaderboard rows will be inserted here dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (Optional if you need to use Bootstrap JavaScript components) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+      //hardcoded for now
+    var leaderboardData = [
+      { rank: 1, name: "Player 1", score: 100, streak: 77 },
+      { rank: 2, name: "Player 2", score: 90 },
+      { rank: 3, name: "Player 3", score: 80 },
+      { rank: 4, name: "Player 4", score: 70 },
+      { rank: 5, name: "Player 5", score: 60 }
+    ];
+
+    // function to populate the leaderboard table
+    function populateLeaderboard() {
+      var leaderboardBody = document.getElementById("leaderboard-body");
+      leaderboardBody.innerHTML = ""; // clear existing rows
+
+      leaderboardData.forEach(function (player) {
+        var row = "<tr><td>" + player.rank + "</td><td>" + player.name + "</td><td>" + player.score + "</td><td>"+ player.streak + "</td></tr>";
+        leaderboardBody.innerHTML += row;
+      });
+    }
+
+    // populate the leaderboard when the page loads
+    populateLeaderboard();
+  </script>
+</body>
 {% endblock %}
 
 </body>
