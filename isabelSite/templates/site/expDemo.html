@@ -1,12 +1,14 @@
 {% extends "site/base.html" %}
-{% load my_tags %}
+{% load exp_tags %}
 
 {% block title %}Update Page{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
   Hello {{ user.username }}! <br>
-    Points: {% temp_points %}
+  Exp Before : {{ user.user_xp }} <br>
+  Exp Assigned: {% update_user_points user %} <br>
+  Exp After : {{ user.user_xp }} <br>
   <p><a href="{% url 'logout_view' %}">Log Out</a></p>
 {% else %}
   <p>You are not logged in</p>

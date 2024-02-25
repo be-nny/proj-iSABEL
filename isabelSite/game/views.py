@@ -25,11 +25,11 @@ def scan(request):
 """
 View for the update page, if a user isn't logged in, they are redirected
 """
-def update(request):
+def expDemo(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, "site/update.html", {})
+        return render(request, "site/expDemo.html", {})
 """
 When a user isn't logged in, they are redirected to the log in and sign up page
 """
