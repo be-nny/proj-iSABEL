@@ -1,33 +1,6 @@
-from django import template
 from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
-
-register = template.Library()
-
-
-@register.simple_tag
-def updateUserFromBCode(user, request):
-    code = request.GET.get("code", "0")
-    return updateUserExp(user, code)
-
-def updateUserExp(user, code):
-    (exists, attributes) = getAttributes(code)
-    points_to_add = calculatePointsToAdd(exists, attributes)
-    user.user_xp += points_to_add
-    user.save()
-    return points_to_add
-
-def calculatePointsToAdd(exists, attributes):
-    if exists:
-        attribute_weights = {'fair trade': 50, 'emulsifier': -10, 'United Kingdom': 15, 'preservative': -5, 'palm oil': -50,
-                             'vegetarian': 25, 'vegan': 25, 'aluminium': 30, 'cardboard': 20, 'plastic': 10, 'meat': 10,
-                             'weight': 0.5}
-        points = 100
-        for attribute, presence in attributes.items():
-            points += attribute_weights[attribute] * presence
-        return round(points)
-    return 0
 
 def getAttributes(code):
     url = "https://www.barcodelookup.com/" + code
@@ -68,3 +41,9 @@ def getAttributes(code):
 
     else:
         return (False, attributes)
+
+
+codes = ["50001690304311", "5099077002265", "5060490010533", "5000169200049", "5410316966139", "5010605400339", "5000328015583", "4009900532037", "8711200562725", "7622210470126", "5449000000996", "0787099226947", "5020411121151", "5010003000131", "5051898971137", "5000159510691"]
+
+for code in codes:
+    print(getAttributes(code))
