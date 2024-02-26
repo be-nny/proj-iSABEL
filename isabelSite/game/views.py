@@ -21,6 +21,16 @@ def scan(request):
         return userNotLoggedIn(request)
     else:
         return render(request, "site/scan.html", {})
+
+"""
+View for the update page, if a user isn't logged in, they are redirected
+"""
+def expDemo(request):
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return render(request, "site/expDemo.html", {})
+
 """
 When a user isn't logged in, they are redirected to the log in and sign up page
 """
@@ -37,11 +47,11 @@ def loginSignup(request):
 """
 View for the user map page, if a user isn't logged in, they are redirected
 """
-def userMap(request):
+def rewards(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("Map page")
+        return render(request, "site/rewards.html", {})
 
 """
 View for the leaderboard page, if a user isn't logged in, they are redirected
@@ -50,7 +60,7 @@ def leaderboard(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("Leaderboard page")
+        return render(request, "site/leaderboard.html", {})
 
 """
 View for the users profile page, if a user isn't logged in, they are redirected
@@ -59,7 +69,7 @@ def profile(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("Profile page")
+        return render(request, "site/profile.html", {})
 
 """
 View for the about page, if a user isn't logged in, they are redirected
@@ -68,4 +78,4 @@ def about(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return HttpResponse("About page")
+        return render(request, "site/about.html", {})

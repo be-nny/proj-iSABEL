@@ -1,0 +1,59 @@
+{% extends "site/base.html" %}
+{% load static %}
+{% block title %}Leaderboard{% endblock %}
+
+{% block content %}
+<div class="ctn">
+  <h1>Leaderboard</h1>
+   <div class="container">
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Score</th>
+            <th>Streaks</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <!-- Leaderboard rows will be inserted here dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (Optional if you need to use Bootstrap JavaScript components) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Example of populating the leaderboard dynamically
+    // You can replace this with your own logic to fetch and populate data
+
+    // Sample leaderboard data
+    var leaderboardData = [
+      { rank: 1, name: "{{user.username}}", score: 100, streaks: 5 },
+      { rank: 2, name: "Player 2", score: 90, streaks: 3 },
+      { rank: 3, name: "Player 3", score: 80, streaks: 2 },
+      { rank: 4, name: "Player 4", score: 70, streaks: 1 },
+      { rank: 5, name: "Player 5", score: 60, streaks: 0 }
+    ];
+
+    // Function to populate the leaderboard table
+    function populateLeaderboard() {
+      var leaderboardBody = document.getElementById("leaderboard-body");
+      leaderboardBody.innerHTML = ""; // Clear existing rows
+
+      leaderboardData.forEach(function (player) {
+        var row = "<tr><td>" + player.rank + "</td><td>" + player.name + "</td><td>" + player.score + "</td><td>" + player.streaks + "</td></tr>";
+        leaderboardBody.innerHTML += row;
+      });
+    }
+
+    // Populate the leaderboard when the page loads
+    populateLeaderboard();
+  </script>
+</div>
+{% endblock %}
