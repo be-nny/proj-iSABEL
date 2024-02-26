@@ -9,7 +9,6 @@ urlpatterns = [
     path("scan", views.scan, name="scan"),
     path("rewards", views.rewards, name="rewards"),
     path("expDemo", views.expDemo, name="expDemo"),
-    path("map", views.userMap, name="userMap"),
     path("leaderboard", views.leaderboard, name="leaderboard"),
     path("about", views.about, name="about"),
     path("profile", views.profile, name="profile"),
