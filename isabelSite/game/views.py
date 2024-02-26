@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
+from .models import MyUser
+from django.http import HttpResponse
+from django.template import loader
 
 """
 Initialises the login and sign up flow
@@ -60,7 +63,12 @@ def leaderboard(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, "site/leaderboard.html", {})
+        mydata = MyUser.objects.all()
+        template = loader.get_template('site/leaderboard.html')
+        context = {
+            'myusers': mydata,
+        }
+        return HttpResponse(template.render(context, request))
 
 """
 View for the users profile page, if a user isn't logged in, they are redirected
