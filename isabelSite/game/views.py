@@ -63,7 +63,7 @@ def leaderboard(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        mydata = MyUser.objects.all()
+        mydata = MyUser.objects.all().order_by('user_xp').values()
         template = loader.get_template('site/leaderboard.html')
         context = {
             'myusers': mydata,
