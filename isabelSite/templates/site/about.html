@@ -1,0 +1,75 @@
+{% extends "site/base.html" %}
+<!DOCTYPE html>
+{% load static %}
+
+{% block title %}About{% endblock %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/about.css' %}" />
+</head>
+<body>
+
+
+  <header>
+    <h1>About Us</h1>
+  </header>
+
+<div class="center">
+    <img class="center" src="../static/assets/test.png" alt="About Us Image">
+</div>
+
+<!-- specs and stats, filler text -->
+<div>
+    <div class="d-flex align-items-center left">
+        <div class="d-inline-block">
+            <h1 class="font-family-mono fw-semi-bold stroke-text display-4 grid-container item1"><span>12</span></h1>
+        </div>
+        <div class="d-inline-block ps-2">
+            <h4 class="line-height-100 fw-normal mb-0">+</h4>
+            <p class="mono-heading">Years of Experience</p>
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center center">
+        <div class="d-inline-block">
+            <h1 class="font-family-mono fw-semi-bold stroke-text display-4"><span>20</span></h1>
+        </div>
+        <div class="d-inline-block ps-2">
+            <h4 class="line-height-100 fw-normal mb-0">k</h4>
+            <p class="mono-heading">Kilos Recycled</p>
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center right">
+        <div class="d-inline-block">
+            <h1 class="font-family-mono fw-semi-bold stroke-text display-4"><span>90</span></h1>
+        </div>
+        <div class="d-inline-block ps-2">
+            <h4 class="line-height-100 fw-normal mb-0">+</h4>
+            <p class="mono-heading">Projects Done</p>
+        </div>
+    </div>
+</div>
+      <h2>Our Story</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet est nec metus rhoncus, nec malesuada velit aliquet. Vestibulum tincidunt libero euismod justo feugiat, id venenatis leo accumsan. Cras sit amet libero nec libero sollicitudin vehicula eu eu ipsum. Quisque tristique mi eu lorem maximus, sit amet vestibulum leo ultricies.</p>
+
+      <h2>Our Team</h2>
+      <div class="team-members">
+        <div class="member">
+          <img src="../static/assets/test.png" alt="Team Member 1">
+          <h3>John Doe</h3>
+          <p>Founder & CEO</p>
+        </div>
+          <div class="member">
+              <img src="../static/assets/test.png" alt="Team Member 2">
+              <h3>Jane Smith</h3>
+              <p>COO</p>
+          </div>
+</div>
+</body>
+{% endblock %}

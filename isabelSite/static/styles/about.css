@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.center {
+  width: 50%;
+  padding: 10px;
+    margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: white;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+/*
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns
+}
+
+.child {
+  /* Specify grid area for the child element
+  grid-area: 1 / 1 / 2 / 2; /* Start row 1, start column 1, end row 2, end column 2
+}
+
+<editor-fold desc="Description">
+    .grid-container {
+        display: grid;
+        gap: 50px;
+    }
+
+    .item1 {
+      grid-row: 1 / 2;
+        grid-column: 1/2;
+    }
+</editor-fold>*/
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+
+
+.right {
+  float: right;
+    padding: 10px;}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.content {
+    padding: 40px 0;
+}
+
+h1, h3 {
+    color: black;
+}
+
+h2{
+    color: black;
+    margin-left: 50px;
+}
+p {
+    margin-right: 150px;
+    margin-left: 60px;
+}
+.team-members {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.member {
+    text-align: center;
+    margin: 20px;
+}
+
+.member img {
+    width: 150px;
+    border-radius: 50%;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}

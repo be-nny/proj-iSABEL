@@ -3,7 +3,10 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <p>Please Login or Signup</p>
-  <a href="{% url 'login' %}">Log In</a> |
-  <a href="{% url 'signUp' %}">Sign Up</a>
+    <h1 class="title">Please Login or Signup</h1>
+    <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+    <br>
+    <a href="{% url 'signUp' %}" class="btn btn-secondary">Sign Up</a>
+    <br>
+    <h4 class="subtitle">No account? Sign up now!</h4>
 {% endblock %}
