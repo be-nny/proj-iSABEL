@@ -7,6 +7,7 @@ urlpatterns = [
     path("logout", views.userNotLoggedIn, name="logout_view"),
     path("login-signup", views.loginSignup, name="login-signup"),
     path("scan", views.scan, name="scan"),
+    path("rewards", views.rewards, name="rewards"),
     path("expDemo", views.expDemo, name="expDemo"),
     path("map", views.userMap, name="userMap"),
     path("leaderboard", views.leaderboard, name="leaderboard"),

@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 {% load static %}
-
-
 <html>
     <head>
         <meta charset="utf-8">
         <title>{% block title %}iSABEL{% endblock %}</title>
+        <script src="{% static 'scripts/navbar.js' %}"></script>
+
         <link rel="stylesheet" href="{% static 'styles/navbar.css' %}" />
+        <link rel="stylesheet" href="{% static 'styles/site-base.css' %}" />
+
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
     <body>
-        <main>
+    <div class="ctn">
+        <img class="banner-img" src="{% static 'assets/iSABEL%20logo%20(light).png' %}">
         {% block content %}
         {% endblock %}
-        </main>
-        <div class="wrapper">
-            <nav>
-                <input type="radio" name="tab" id="leaderboard">
-                <input type="radio" name="tab" id="rewards">
-                <input type="radio" name="tab" id="scan" checked>
-                <input type="radio" name="tab" id="profile">
-                <input type="radio" name="tab" id="about">
+    </div>
+    <div class="wrapper">
+        <nav>
+            <input type="radio" name="tab" id="leaderboard" onclick="linkClicked('leaderboard')">
+            <input type="radio" name="tab" id="rewards" onclick="linkClicked('rewards')">
+            <input type="radio" name="tab" id="scan" onclick="linkClicked('scan')">
+            <input type="radio" name="tab" id="profile" onclick="linkClicked('profile')">
+            <input type="radio" name="tab" id="about" onclick="linkClicked('about')">
 
-                <label for="leaderboard" class="leaderboard">
-                    <a href="#"><i class="bi bi-trophy" style="font-size: 70px";></i></a>
-                </label>
+            <label for="leaderboard" class="leaderboard">
+                <a class="bi bi-trophy" style="font-size: 70px;"></a>
+            </label>
 
-                <label for="rewards" class="rewards">
-                    <a href="#"><i class="bi bi-award" style="font-size: 70px";></i></a>
-                </label>
+            <label for="rewards" class="rewards">
+                <a class="bi bi-award" style="font-size: 70px;"></a>
+            </label>
 
-                <label for="scan" class="scan">
-                    <a href="#"><i class="bi bi-camera" style="font-size: 70px";></i></a>
-                </label>
+            <label for="scan" class="scan">
+                <a class="bi bi-camera" style="font-size: 70px;"></a>
+            </label>
 
-                <label for="profile" class="profile">
-                    <a href="#"><i class="bi bi-person" style="font-size: 70px";></i></a>
-                </label>
+            <label for="profile" class="profile">
+                <a class="bi bi-person" style="font-size: 70px;"></a>
+            </label>
 
-                <label for="about" class="about">
-                    <a href="#"><i class="bi bi-info-circle" style="font-size: 70px";></i></a>
-                </label>
+            <label for="about" class="about">
+                <a class="bi bi-info-circle" style="font-size: 70px;"></a>
+            </label>
 
-                <div class="tab">
-                </div>
-            </nav>
-        </div>
+            <div class="tab"></div>
+        </nav>
+    </div>
+    <script>checkTabs();</script>
     </body>
 </html>
