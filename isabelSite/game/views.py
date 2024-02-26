@@ -21,6 +21,7 @@ def scan(request):
         return userNotLoggedIn(request)
     else:
         return render(request, "site/scan.html", {})
+
 """
 When a user isn't logged in, they are redirected to the log in and sign up page
 """
