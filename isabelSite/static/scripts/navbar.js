@@ -5,6 +5,7 @@ function linkClicked(name) {
                 window.location.href = "leaderboard";
             });
             break;
+
         case "rewards":
             sleep(500).then(() => {
                 window.location.href = "rewards";

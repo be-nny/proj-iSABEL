@@ -16,41 +16,42 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </head>
     <body>
-    <div id="main">
+    <div class="ctn">
+        <img class="banner-img" src="{% static 'assets/iSABEL%20logo%20(light).png' %}">
         {% block content %}
         {% endblock %}
-        <div class="wrapper">
-            <nav>
-                <input type="radio" name="tab" id="leaderboard" onclick="linkClicked('leaderboard')">
-                <input type="radio" name="tab" id="rewards" onclick="linkClicked('rewards')">
-                <input type="radio" name="tab" id="scan" onclick="linkClicked('scan')">
-                <input type="radio" name="tab" id="profile" onclick="linkClicked('profile')">
-                <input type="radio" name="tab" id="about" onclick="linkClicked('about')">
-
-                <label for="leaderboard" class="leaderboard">
-                    <a class="bi bi-trophy" style="font-size: 70px;"></a>
-                </label>
-
-                <label for="rewards" class="rewards">
-                    <a class="bi bi-award" style="font-size: 70px;"></a>
-                </label>
-
-                <label for="scan" class="scan">
-                    <a class="bi bi-camera" style="font-size: 70px;"></a>
-                </label>
-
-                <label for="profile" class="profile">
-                    <a class="bi bi-person" style="font-size: 70px;"></a>
-                </label>
-
-                <label for="about" class="about">
-                    <a class="bi bi-info-circle" style="font-size: 70px;"></a>
-                </label>
-
-                <div class="tab"></div>
-            </nav>
-        </div>
-        <script>checkTabs();</script>
     </div>
+    <div class="wrapper">
+        <nav>
+            <input type="radio" name="tab" id="leaderboard" onclick="linkClicked('leaderboard')">
+            <input type="radio" name="tab" id="rewards" onclick="linkClicked('rewards')">
+            <input type="radio" name="tab" id="scan" onclick="linkClicked('scan')">
+            <input type="radio" name="tab" id="profile" onclick="linkClicked('profile')">
+            <input type="radio" name="tab" id="about" onclick="linkClicked('about')">
+
+            <label for="leaderboard" class="leaderboard">
+                <a class="bi bi-trophy" style="font-size: 70px;"></a>
+            </label>
+
+            <label for="rewards" class="rewards">
+                <a class="bi bi-award" style="font-size: 70px;"></a>
+            </label>
+
+            <label for="scan" class="scan">
+                <a class="bi bi-camera" style="font-size: 70px;"></a>
+            </label>
+
+            <label for="profile" class="profile">
+                <a class="bi bi-person" style="font-size: 70px;"></a>
+            </label>
+
+            <label for="about" class="about">
+                <a class="bi bi-info-circle" style="font-size: 70px;"></a>
+            </label>
+
+            <div class="tab"></div>
+        </nav>
+    </div>
+    <script>checkTabs();</script>
     </body>
 </html>
