@@ -71,7 +71,7 @@ def getAttributes(code):
         return (False, attributes)
 
 @register.simple_tag
-def calculateLevelAndExp(user):
+def calculateLevelAndExp(user, index):
     current_exp = copy.copy(user.user_xp)
     level = 1
     next_level_exp = expForNextLevel(level)
@@ -79,7 +79,7 @@ def calculateLevelAndExp(user):
         current_exp -= next_level_exp
         level += 1
         next_level_exp = expForNextLevel(level)
-    return (level, current_exp, next_level_exp)
+    return (level, current_exp, next_level_exp)[index]
 
 def expForNextLevel(current_level):
     return round(10000 * (10.1 * math.tanh((2.65/100) * (current_level - 99)) + 10))
