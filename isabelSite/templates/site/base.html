@@ -8,6 +8,9 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="{% static 'scripts/numberCounter.js' %}"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="{% static 'styles/profile.css' %}">
         <link rel="stylesheet" href="{% static 'styles/navbar.css' %}" />
@@ -18,6 +21,10 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body>
+    <script>
+        AOS.init();
+    </script>
+
     <div class="ctn">
         <img class="banner-img" src="{% static 'assets/iSABEL%20logo%20(light).png' %}">
         {% block content %}
