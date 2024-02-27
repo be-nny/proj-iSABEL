@@ -11,12 +11,44 @@
     margin-top: 10%;
     font-family: 'Montserrat', sans-serif;
     font-size: 30px;
-    border-radius: 30px;
 }
 
 .stats_card {
     margin-top: 10%;
-    font-family: 'Montserrat', sans-serif;
     font-size: 30px;
     border-radius: 30px;
+}
+
+.card-title {
+    color: white;
+    font-size: 70px;
+    font-weight: 600;
+}
+
+.card-subtitle {
+    color: #CBE4DE;
+}
+
+.card {
+    background: #2E4F4F!important;
+}
+
+.list-group-item{
+    background: #2E4F4F!important;
+    color: white;
+}
+
+.btn-primary{
+    background: linear-gradient(45deg, #05abe0 0%, #74CB92 100%);
+}
+
+.btn {
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px!important;
+    border-radius: 40px!important;
+    font-size: 25px!important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
