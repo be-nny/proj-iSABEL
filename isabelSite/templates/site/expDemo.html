@@ -9,7 +9,7 @@
   Exp Before : {{ user.user_xp }} <br/>
   Exp Added : {% updateUserFromBCode user request %} <br>
   Exp After : {{ user.user_xp }} <br/>
-  {% calculateLevelAndExp user %}
+  {% calculateLevelAndExp user 0 %}
   <form action="/game/expDemo" >
     <label for="code">Code:</label><br>
     <input type="text" name="code" id="code">
