@@ -2,9 +2,10 @@ from django import template
 from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
+import copy
+import math
 
 register = template.Library()
-
 
 @register.simple_tag
 def updateUserFromBCode(user, request):
@@ -68,3 +69,22 @@ def getAttributes(code):
 
     else:
         return (False, attributes)
+
+@register.simple_tag
+def calculateLevelAndExp(user):
+    current_exp = copy.copy(user.user_xp)
+    level = 1
+    next_level_exp = expForNextLevel(level)
+    while next_level_exp <= current_exp:
+        current_exp -= next_level_exp
+        level += 1
+        next_level_exp = expForNextLevel(level)
+    return (level, current_exp, next_level_exp)
+
+def expForNextLevel(current_level):
+    return round(10000 * (10.1 * math.tanh((2.65/100) * (current_level - 99)) + 10))
+
+@register.simple_tag
+def tempReset(user):
+    user.user_xp = 0
+    user.save()
