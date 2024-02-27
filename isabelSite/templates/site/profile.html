@@ -1,4 +1,5 @@
 {% extends "site/base.html" %}
+{% load exp_tags %}
 
 {% block content %}
 {% if user.is_authenticated %}
@@ -9,7 +10,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="bi bi-at"></i> {{ user.username }}</li>
                 <li class="list-group-item"><i class="bi bi-envelope"></i> {{ user.email }}</li>
-                <li class="list-group-item"><i class="bi bi-graph-up"></i> {{ user.user_xp }}</li>
+                <li class="list-group-item"><i class="bi bi-graph-up"></i> {% calculateLevelAndExp user 0 %}</li>
             </ul>
             <a href="{% url 'logout_view' %}" class="btn btn-primary">Log Out</a>
         </div>
@@ -17,7 +18,16 @@
     <div class="card stats_card" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" style="border-radius: 40px">
         <div class="card-body">
             <h1 class="card-title">Stats</h1>
-            <h5 class="counter-count">1023</h5>
+            <div id="xp-level-frac">
+                <h5 class="counter counter-count">{% calculateLevelAndExp user 1 %}</h5>
+                <h5 class="counter">/</h5>
+                <h5 class="counter counter-count">{% calculateLevelAndExp user 2 %}</h5>
+                <h5 class="counter sub-txt">xp</h5>
+            </div>
+            <div id="weight-recycled">
+                <h5 class="counter counter-count">{{ user.weight_recycled }}</h5>
+                <h5 class="counter sub-txt">kg</h5>
+            </div>
         </div>
     </div>
 {% else %}
