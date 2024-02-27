@@ -2,19 +2,27 @@ import cv2
 from keras.models import load_model
 import numpy as np
 
+
+def preProcess(img):
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img = cv2.equalizeHist(img) # histogram expanded from 0 to 255
+    img = img / 255
+    return img
+
+
 cap = cv2.VideoCapture(0)
 cap.set(3, 480)
 cap.set(4, 480)
 
-model = load_model("modelWeights.h5")
+model = load_model("model.keras")
 
 while True:
     success, frame = cap.read()
     if success:
         img = np.asarray(frame)
-        img = cv2.resize(img, (32, 32))
+        img = cv2.resize(img, (28, 28))
         img = preProcess(img)
-        img = img.reshape(1, 32, 32, 1)
+        img = img.reshape(1, 28, 28, 1)
 
         #predict
         #classIndex = int(model.predict_classes(img))
