@@ -3,7 +3,7 @@
 {% block title %}Scan Page{% endblock %}
 
 {% block content %}
-
+    <div id="reader" width="600px" height="600px"></div>
     <!-- Include the camera.js file -->
     <script src="{% static 'scripts/camera.js' %}"></script>
     <!-- Include the html5-qrcode.min.js script -->
@@ -44,6 +44,8 @@
 	</div>
 
     <script>
+
+
     const html5QrCode = new Html5Qrcode(/* element id */ "reader");
     // File based scanning
     const fileinput = document.getElementById('html5-qrcode-private-filescan-input');
