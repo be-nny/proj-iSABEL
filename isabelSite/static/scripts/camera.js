@@ -31,9 +31,6 @@ html5QrCode.start(
   // Start failed, handle it.
 });
 
-const html5QrCode = new Html5Qrcode("reader", /* verbose= */ true);
-
-const html5QrCode = new Html5Qrcode("reader");
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     /* handle success */
 };
