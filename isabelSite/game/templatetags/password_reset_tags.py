@@ -21,7 +21,7 @@ def sendResetCode(request):
                   fail_silently=False,)
         except smtplib.SMTPException:
             print("could not send email.")
-            return True
+        return True
     else:
         return False
 def randomCode():
