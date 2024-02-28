@@ -2,9 +2,10 @@ from django import template
 from bs4 import BeautifulSoup
 import re
 from selenium import webdriver
+import copy
+import math
 
 register = template.Library()
-
 
 @register.simple_tag
 def updateUserFromBCode(user, request):
@@ -14,15 +15,16 @@ def updateUserFromBCode(user, request):
 def updateUserExp(user, code):
     (exists, attributes) = getAttributes(code)
     points_to_add = calculatePointsToAdd(exists, attributes)
+    user.weight_recycled += attributes["weight"] / 100
     user.user_xp += points_to_add
     user.save()
     return points_to_add
 
 def calculatePointsToAdd(exists, attributes):
     if exists:
-        attribute_weights = {'fair trade': 50, 'emulsifier': -10, 'United Kingdom': 15, 'preservative': -5, 'palm oil': -50,
-                             'vegetarian': 25, 'vegan': 25, 'aluminium': 30, 'cardboard': 20, 'plastic': 10, 'meat': 10,
-                             'weight': 0.5}
+        attribute_weights = {'fair trade': 50, 'emulsifier': -10, 'United Kingdom': 15, 'preservative': -15, 'palm oil': -50,
+                             'vegetarian': 25, 'vegan': 25, 'aluminium': 30, 'cardboard': 20, 'plastic': 15, 'meat': 10,
+                             'weight': 0.25}
         points = 100
         for attribute, presence in attributes.items():
             points += attribute_weights[attribute] * presence
@@ -68,3 +70,24 @@ def getAttributes(code):
 
     else:
         return (False, attributes)
+
+@register.simple_tag
+def calculateLevelAndExp(user, index):
+    current_exp = copy.copy(user.user_xp)
+    level = 1
+    next_level_exp = expForNextLevel(level)
+    while next_level_exp <= current_exp:
+        current_exp -= next_level_exp
+        level += 1
+        next_level_exp = expForNextLevel(level)
+    return (level, current_exp, next_level_exp)[index]
+
+def expForNextLevel(current_level):
+    if current_level >= 199:
+        return 200000
+    return round(10000 * (10.1 * math.tanh((2.65/100) * (current_level - 99)) + 10))
+
+@register.simple_tag
+def tempReset(user):
+    user.user_xp = 0
+    user.save()

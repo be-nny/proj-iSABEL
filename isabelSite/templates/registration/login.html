@@ -9,5 +9,7 @@
         <p>Password</p>
         {{ form.password }}
         <button type="submit" class="btn btn-primary login-btn">Log In</button>
+        <br>
+        <a href="{% url 'reset-password-code' %}">Forgot Password?</a>
     </form>
 {% endblock %}

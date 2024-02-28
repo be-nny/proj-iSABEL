@@ -17,6 +17,18 @@ class SignUp(CreateView):
     template_name = "registration/signup.html"
 
 """
+View for sending a user reset password code
+"""
+def resetPasswordCode(request):
+    return render(request, "registration/reset-password-code.html", {})
+
+"""
+View for user password reset
+"""
+def resetPassword(request):
+    return render(request, "registration/reset-password.html", {})
+
+"""
 View for the scan page, if a user isn't logged in, they are redirected
 """
 def scan(request):
