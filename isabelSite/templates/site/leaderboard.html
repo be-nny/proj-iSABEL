@@ -5,15 +5,14 @@
 {% block content %}
 <div class="table-container">
   <h1>Leaderboard</h1>
-    <table border="1">
+    <table class = "table table-bordered table-striped">
+    <thead class="thead-dark">
   <tr>
-    <th>ID</th>
     <th>User</th>
     <th>Score</th>
   </tr>
   {% for x in myusers %}
     <tr>
-      <td>{{ x.id }}</td>
         <td>{{ x.username }}</td>
       <td>{{ x.user_xp }}</td>
     </tr>
