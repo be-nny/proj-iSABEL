@@ -65,7 +65,8 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
             ],
             'builtins': [
-                'game.templatetags.exp_tags'
+                'game.templatetags.exp_tags',
+                'game.templatetags.password_reset_tags'
             ]
         },
     },
