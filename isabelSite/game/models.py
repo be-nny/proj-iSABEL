@@ -36,9 +36,9 @@ class MyUser(AbstractUser):
     user_xp = models.IntegerField(default=0)
     weight_recycled = models.FloatField(default=0)
     streak = models.IntegerField(default=0)
+
     # change the directory later
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
-    total_weight_recycled = models.FloatField(default=0)
     leaderboard_position = models.IntegerField(default=-1)
     longest_streak = models.IntegerField(default=0)
     golden_bins_collected = models.IntegerField(default=0)
@@ -68,9 +68,6 @@ class MyUser(AbstractUser):
 
     def get_profile_pic(self):
         return self.profile_pic
-
-    def get_total_weight_recycled(self):
-        return self.total_weight_recycled
 
     def get_leaderboard_position(self):
         return self.leaderboard_position
