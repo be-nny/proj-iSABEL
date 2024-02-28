@@ -10,14 +10,17 @@ register = template.Library()
 @register.simple_tag
 def sendResetCode(request):
     email = request.GET.get('email', '')
+
+    code = randomCode()
     if email != '':
         try:
             send_mail("iSABEL Password Reset Code",
-                  "Here is the message.",
+                  "Here is your password reset code: " + code,
                   "from@example.com",
                   [email],
                   fail_silently=False,)
         except smtplib.SMTPException:
+            print("could not send email.")
             return True
     else:
         return False
