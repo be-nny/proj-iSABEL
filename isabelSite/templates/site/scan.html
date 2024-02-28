@@ -1,7 +1,10 @@
 {% extends "site/base.html" %}
-
+{% load static %}
 {% block title %}Scan Page{% endblock %}
 
 {% block content %}
+    <div id="reader" width="600px" height="600px"></div>
 
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="{% static 'scripts/camera.js' %}"></script>
 {% endblock %}

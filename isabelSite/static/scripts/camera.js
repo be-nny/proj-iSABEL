@@ -1,22 +1,8 @@
-if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-    navigator.mediaDevices.getUserMedia(
-        {
-            video: {
-                width: {
-                    min: 1280,
-                    ideal: 1920,
-                    max: 1920,
-                },
-                height: {
-                    min: 720,
-                    ideal: 1080,
-                    max: 1080,
-                },
-                facingMode: 'environment'
-            }
-        });
-}
+const html5QrCode = new Html5Qrcode("reader");
+const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    console.log(decodedText)
+};
+const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 
-async function getDevices() {
-  const devices = await navigator.mediaDevices.enumerateDevices();
-}
+// If you want to prefer back camera
+html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
