@@ -13,69 +13,35 @@
     <link rel="stylesheet" href="{% static 'styles/about.css' %}" />
 </head>
 <body>
-
-  <header>
-    <h1>About Us</h1>
-  </header>
-
-<div class="center">
-    <img class="center" src="../static/assets/test.png" alt="About Us Image">
-</div>
-
-<!-- specs and stats, filler text -->
-<div>
-    <div class="d-flex align-items-center left">
-        <div class="d-inline-block">
-            <h1 class="font-family-mono fw-semi-bold stroke-text display-4 grid-container item1"><span>12</span></h1>
-        </div>
-        <div class="d-inline-block ps-2">
-            <h4 class="line-height-100 fw-normal mb-0">+</h4>
-            <p class="mono-heading">Years of Experience</p>
+    <div class="card profile_card" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
+        <div class="card-body">
+            <h1 class="card-title">Our vision</h1>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="bi bi-graph-up"></i> 2030 Net Zero Goal</li>
+                <li class="list-group-item"><i class="bi bi-award"></i> 1st in Europe for Climate Action</li>
+                <li class="list-group-item"><i class="bi bi-bar-chart"></i> 4th in UK for Affordable and Clean Energy</li>
+            </ul>
         </div>
     </div>
-
-    <div class="d-flex align-items-center center">
-        <div class="d-inline-block">
-            <h1 class="font-family-mono fw-semi-bold stroke-text display-4"><span>20</span></h1>
-        </div>
-        <div class="d-inline-block ps-2">
-            <h4 class="line-height-100 fw-normal mb-0">k</h4>
-            <p class="mono-heading">Kilos Recycled</p>
-        </div>
-    </div>
-
-    <div class="d-flex align-items-center right">
-        <div class="d-inline-block">
-            <h1 class="font-family-mono fw-semi-bold stroke-text display-4"><span>90</span></h1>
-        </div>
-        <div class="d-inline-block ps-2">
-            <h4 class="line-height-100 fw-normal mb-0">+</h4>
-            <p class="mono-heading">Projects Done</p>
-        </div>
-    </div>
-</div>
-      <h2>Our Story</h2>
-  <p>After much planning and deliberation, iSABEL imagined a system where users could scan
+<div style="padding-top: 30px;">
+  <p style="color: white;font-size: 30px;margin-left: 0px;margin-right: 0px;">After much planning and deliberation, iSABEL imagined a system where users could scan
       the barcodes of food items purchased on campus and receive XP rewards based on their
-      sustainability ranking. Scanning an item would add it to a user's virtual 'basket'. After
-      consumption, the user would then locate a suitable bin using a marked map of the campus and
-      scan its QR code, thereby dumping the contents of their 'basket' into that bin (and, indeed,
-      disposing of their real-life waste suitably!). Items that are vegetarian, vegan, don't contain
-      palm oil, have recyclable packaging etc., would receive higher points and encourage faster
-      levelling. Players would compete to top the leaderboard as well as earn discount codes as they
-      helped to reduce littering, promote recycling, and more sustainable food options on campus. </p>
-      <h2>Our Team</h2>
+      sustainability ranking. Scanning an item would add it to a user's virtual 'basket'. Items that are vegetarian, vegan, don't contain
+      palm oil, have recyclable packaging etc., encourage faster levelling. Players compete to top the leaderboard and
+      help to reduce littering, promote recycling, and more sustainable food options on campus. </p>
+</div>
+    <div style="padding-top: 20px;">
       <div class="team-members">
         <div class="member">
-          <img src="../static/assets/test.png" alt="Team Member 1">
-          <h3>John Doe</h3>
-          <p>Founder & CEO</p>
+          <img src="../static/assets/uni-logo.png" alt="University of Exeter">
+          <h3 style="color:white;font-size: 20px;padding-top:10px;">University of Exeter</h3>
         </div>
           <div class="member">
-              <img src="../static/assets/test.png" alt="Team Member 2">
-              <h3>Jane Smith</h3>
-              <p>COO</p>
+              <img src="../static/assets/iSABEL-logo-small-light.png" alt="Miss iSabel">
+              <h3 style="padding-top:10px;color:white;font-size: 20px;">iSABEL</h3>
           </div>
+          </div>
+        </div>
 </div>
 </body>
 {% endblock %}
