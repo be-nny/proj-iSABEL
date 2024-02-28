@@ -26,9 +26,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# EMAIL INFO
+EMAIL_HOST = ""
+EMAIL_PORT = ""
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -65,7 +69,8 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
             ],
             'builtins': [
-                'game.templatetags.exp_tags'
+                'game.templatetags.exp_tags',
+                'game.templatetags.password_reset_tags'
             ]
         },
     },

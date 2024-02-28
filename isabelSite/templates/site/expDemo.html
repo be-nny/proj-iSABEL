@@ -7,24 +7,12 @@
 {% if user.is_authenticated %}
   Hello {{ user.username }}! <br/>
   Exp Before : {{ user.user_xp }} <br/>
-  Exp Added : {% update_user_exp_from_form user request %} <br>
+  Exp Added : {% updateUserFromBCode user request %} <br>
   Exp After : {{ user.user_xp }} <br/>
-  <form action="/game/expDemo" >
-    <label for="isvegan">Is it vegan?:</label><br/>
-    <select name="isvegan" id="isvegan">
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select><br/>
-    <label for="isplastic">Is it made of plastic?:</label><br/>
-    <select name="isplastic" id="isplastic">
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select><br/>
-    <label for="isheavy">Is it heavy?:</label><br/>
-    <select name="isheavy" id="isheavy">
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select><br/>
+  {% calculateLevelAndExp user 0 %}
+  <form action="/game/expDemo">
+    <label for="code">Code:</label><br>
+    <input type="text" name="code" id="code">
     <input type="submit" value="Submit">
   </form>
 {% else %}

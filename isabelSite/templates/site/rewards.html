@@ -1,5 +1,37 @@
 {% extends "site/base.html" %}
-
+{% load static %}
 {% block content %}
-    hello
+    <div class="card qr-card" style="border-radius: 40px;" data-aos="flip-left">
+      <img class="card-img-top" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
+      <div class="card-body">
+        <h5 class="card-title">McDonalds</h5>
+        <p class="card-text">Your discount for your next McDonalds order!</p>
+        <a href="#" class="btn btn-secondary">Redeem</a>
+      </div>
+</div>
+
+
+    <div class="card qr-card" style="border-radius: 40px;" data-aos="flip-left">
+      <img class="card-img-top" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
+      <div class="card-body">
+        <h5 class="card-title">Forum Shop</h5>
+        <p class="card-text">Your discount for your next shop!</p>
+        <a href="#" class="btn btn-secondary">Redeem</a>
+      </div>
+</div>
+
+ <div class="card qr-card" style="border-radius: 40px;" data-aos="flip-left">
+      <img class="card-img-top" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
+      <div class="card-body">
+        <h5 class="card-title">Ram Bar</h5>
+        <p class="card-text">Your discount for your next drink!</p>
+        <a href="#" class="btn btn-secondary">Redeem</a>
+      </div>
+</div>
+
+<div id="blank-space">
+
+</div>
+
+
 {% endblock %}
