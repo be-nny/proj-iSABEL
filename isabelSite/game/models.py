@@ -36,6 +36,7 @@ class MyUser(AbstractUser):
     user_xp = models.IntegerField(default=0)
     weight_recycled = models.FloatField(default=0)
     streak = models.IntegerField(default=0)
+
     # change the directory later
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     leaderboard_position = models.IntegerField(default=-1)
