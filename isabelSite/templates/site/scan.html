@@ -3,23 +3,8 @@
 {% block title %}Scan Page{% endblock %}
 
 {% block content %}
-
     <div id="reader" width="600px" height="600px"></div>
-    <!-- Include the html5-qrcode.min.js script -->
-    <script src="node_modules/html5-qrcode/html5-qrcode.min.js" type="text/javascript"></script>
 
-         <div id="reader__header_message" style="display: none; text-align: center; font-size: 14px; padding: 2px 10px; margin: 4px; border-top: 1px solid rgb(246, 246, 246); background: rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">Requesting camera permissions...</div>
-    </div>
-    <div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center; position: relative;">
-
-        <br>
-        </div>
-
-</div>
-
-			<div id="scanned-result"></div>
-		</div>
-	</div>
-
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="{% static 'scripts/camera.js' %}"></script>
 {% endblock %}
