@@ -3,75 +3,23 @@
 {% block title %}Scan Page{% endblock %}
 
 {% block content %}
+
     <div id="reader" width="600px" height="600px"></div>
-    <!-- Include the camera.js file -->
-    <script src="{% static 'scripts/camera.js' %}"></script>
     <!-- Include the html5-qrcode.min.js script -->
     <script src="node_modules/html5-qrcode/html5-qrcode.min.js" type="text/javascript"></script>
 
          <div id="reader__header_message" style="display: none; text-align: center; font-size: 14px; padding: 2px 10px; margin: 4px; border-top: 1px solid rgb(246, 246, 246); background: rgba(0, 0, 0, 0); color: rgb(17, 17, 17);">Requesting camera permissions...</div>
     </div>
     <div id="reader__scan_region" style="width: 100%; min-height: 100px; text-align: center; position: relative;">
+
         <br>
         </div>
-    <div id="reader__dashboard" style="width: 100%;">
-        <div id="reader__dashboard_section" style="width: 100%; padding: 10px 0px; text-align: left;">
-            <div>
-                <div id="reader__dashboard_section_csr" style="display: block; text-align: center;">
-                    <span style="margin-right: 10px;">
 
-                    </span>
-                    <span>
-                        <button id="html5-qrcode-button-camera-start" class="html5-qrcode-element" style="opacity: 1; display: inline-block;">Start Scanning</button>
-                        <button id="html5-qrcode-button-camera-stop" class="html5-qrcode-element" style="display: none;" disabled="">Stop Scanning</button>
-                    </span>
-                </div>
-                <div style="text-align: center; margin: auto auto 10px; width: 80%; max-width: 600px; border: 6px dashed rgb(235, 235, 235); padding: 10px; display: none;">
-                    <label for="html5-qrcode-private-filescan-input" style="display: inline-block;">
-                        <button id="html5-qrcode-button-file-selection" class="html5-qrcode-element">Choose Image - No image choosen</button>
-                        <input id="html5-qrcode-private-filescan-input" class="html5-qrcode-element" type="file" accept="image/*" style="display: none;">
-                    </label>
-                    <div style="font-size: 12px; color: rgb(97, 97, 97); margin-top: 5px; line-height: 1.2;">Select Image from file system to scan barcode. Supported format: image/*</div>
-                </div>
-                <div id="html5-qrcode-video" style="width: 100%; margin: 0px auto; max-width: 600px;"></div>
-            </div>
-        </div>
-    </div>
 </div>
 
 			<div id="scanned-result"></div>
 		</div>
 	</div>
 
-    <script>
-
-
-    const html5QrCode = new Html5Qrcode(/* element id */ "reader");
-    // File based scanning
-    const fileinput = document.getElementById('html5-qrcode-private-filescan-input');
-    fileinput.addEventListener('change', e => {
-      if (e.target.files.length == 0) {
-        // No file selected, ignore
-        return;
-      }
-
-      const imageFile = e.target.files[0];
-      // Scan QR Code
-      html5QrCode.scanFile(imageFile, true)
-      .then(decodedText => {
-        // success, use decodedText
-        console.log(decodedText);
-      })
-      .catch(err => {
-        // failure, handle it.
-        console.log(`Error scanning file. Reason: ${err}`)
-      });
-    });
-
-    // Note: Current public API `scanFile` only returns the decoded text. There is
-    // another work in progress API (in beta) which returns a full decoded result of
-    // type `QrcodeResult` (check interface in src/core.ts) which contains the
-    // decoded text, code format, code bounds, etc.
-    // Eventually, this beta API will be migrated to the public API.
-    </script>
+    <script src="{% static 'scripts/camera.js' %}"></script>
 {% endblock %}
