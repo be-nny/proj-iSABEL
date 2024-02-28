@@ -2,11 +2,28 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hello {{ user.username }}!
-  <p><a href="{% url 'logout_view' %}">Log Out</a></p>
+    <div class="card profile_card" data-aos="flip-left" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
+        <div class="card-body">
+            <h1 class="card-title">Profile</h1>
+            <h3 class="card-subtitle">Account Information</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="bi bi-at"></i> {{ user.username }}</li>
+                <li class="list-group-item"><i class="bi bi-envelope"></i> {{ user.email }}</li>
+                <li class="list-group-item"><i class="bi bi-graph-up"></i> {{ user.user_xp }}</li>
+            </ul>
+            <a href="{% url 'logout_view' %}" class="btn btn-primary">Log Out</a>
+        </div>
+    </div>
+    <div class="card stats_card" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" style="border-radius: 40px">
+        <div class="card-body">
+            <h1 class="card-title">Stats</h1>
+            <h5 class="counter-count">1023</h5>
+        </div>
+    </div>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a> |
-  <a href="{% url 'signup' %}">Sign Up</a>
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
 {% endif %}
+
 {% endblock %}
