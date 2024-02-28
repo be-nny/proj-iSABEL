@@ -3,34 +3,16 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
 
-class CustomUserManager(UserManager):
-    def _create_user(self, email, password, **extra_fields):
-        if not email:
-            raise ValueError("You have not provided a valid e-mail address")
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_user(self, username=None, email=None, password=None, **extra_fields):
-        extra_fields.setdefault('is_game_keeper', False)
-        extra_fields.setdefault('is_superuser', False)
-        return self._create_user(email, password, **extra_fields)
-
-    def create_superuser(self, username=None, email=None, password=None, **extra_fields):
-        extra_fields.setdefault('is_game_keeper', True)
-        extra_fields.setdefault('is_superuser', True)
-        return self._create_user(email, password, **extra_fields)
-
-
-# Create your models here.
+# Define a custom user model inheriting from AbstractUser
 class MyUser(AbstractUser):
-
+    # Set the field to be used as the unique identifier for authentication
     USERNAME_FIELD = 'username'
+    # Define the field to be used as the email field
     EMAIL_FIELD = 'email'
+    # Define the fields required when creating a user
     REQUIRED_FIELDS = []
 
+    # Custom fields for the user model
     first_name = models.CharField(max_length=20, null=False, blank=False)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user_xp = models.IntegerField(default=0)
@@ -45,6 +27,7 @@ class MyUser(AbstractUser):
     # is_game_keeper = models.BooleanField(default=False)
     # is_superuser = models.BooleanField(default=False)
 
+    # Define methods to retrieve user information
     def get_username(self):
         return self.username
 
@@ -55,6 +38,7 @@ class MyUser(AbstractUser):
         return self.first_name
 
     def get_short_name(self):
+        # Return first name or part of the email before '@'
         return self.first_name or self.email.split('@')[0]
 
     def get_user_xp(self):
@@ -78,5 +62,8 @@ class MyUser(AbstractUser):
     def get_golden_bins_collected(self):
         return self.golden_bins_collected
 
+    # Define the string representation of the user
     def __str__(self):
         return self.username
+
+# Author: Merve Ipek Bal
