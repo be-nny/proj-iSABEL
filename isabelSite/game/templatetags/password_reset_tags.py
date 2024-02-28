@@ -18,7 +18,8 @@ def sendResetCode(request):
                   [email],
                   fail_silently=False,)
         except smtplib.SMTPException:
-            return False
-    return True
+            return True
+    else:
+        return False
 def randomCode():
     return ''.join(str(random.randint(0, 9)) for _ in range(6))
