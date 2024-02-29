@@ -1,0 +1,24 @@
+{% extends "site/base.html" %}
+{% load static %}
+{% block title %}Leaderboard{% endblock %}
+{# Alicia Henderson 26/2/24 #}
+{% block content %}
+<div class="table-container">
+  <h1>Leaderboard</h1>
+<div class="card profile_card" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
+    <table class = "table table-bordered table-striped">
+    <thead class="thead-dark">
+  <tr>
+    <th>User</th>
+    <th>Score</th>
+  </tr>
+  {% for x in myusers %}
+    <tr>
+        <td style="color: white;">{{ x.username }}</td>
+      <td style="color: white;">{{ x.user_xp }}</td>
+    </tr>
+  {% endfor %}
+</table>
+</div>
+</div>
+{% endblock %}

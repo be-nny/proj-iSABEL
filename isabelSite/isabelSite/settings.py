@@ -26,9 +26,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# EMAIL INFO
+EMAIL_HOST = ""
+EMAIL_PORT = ""
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -64,6 +68,10 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            'builtins': [
+                'game.templatetags.exp_tags',
+                'game.templatetags.password_reset_tags'
+            ]
         },
     },
 ]
@@ -128,3 +136,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "scan"
 LOGOUT_REDIRECT_URL = "logout_view"
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "user.info.isabel@gmail.com"
+EMAIL_HOST_PASSWORD = "99bQ$%5yvO1B"

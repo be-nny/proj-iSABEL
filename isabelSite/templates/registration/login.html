@@ -1,12 +1,15 @@
 {% extends "registration/base.html" %}
-
 {% block title %}Log In{% endblock %}
 
 {% block content %}
-    <h1>Log In</h1>
-    <form method="post">
+    <form method="post" class="login-from">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Log In</button>
+        <p>Username</p>
+        {{ form.username }}
+        <p>Password</p>
+        {{ form.password }}
+        <button type="submit" class="btn btn-primary login-btn">Log In</button>
+        <br>
+        <a href="{% url 'reset-password-code' %}">Forgot Password?</a>
     </form>
 {% endblock %}

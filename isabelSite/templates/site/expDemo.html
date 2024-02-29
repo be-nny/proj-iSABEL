@@ -1,0 +1,23 @@
+{% extends "site/base.html" %}
+{% load exp_tags %}
+
+{% block title %}Update Page{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hello {{ user.username }}! <br/>
+  Exp Before : {{ user.user_xp }} <br/>
+  Exp Added : {% updateUserFromBCode user request %} <br>
+  Exp After : {{ user.user_xp }} <br/>
+  {% calculateLevelAndExp user 0 %}
+  <form action="/game/expDemo">
+    <label for="code">Code:</label><br>
+    <input type="text" name="code" id="code">
+    <input type="submit" value="Submit">
+  </form>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a> |
+  <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+{% endblock %}

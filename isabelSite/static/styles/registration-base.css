@@ -1,10 +1,45 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+body {
+    background-color: #2C3333;
+    height: 100%;
+    overflow: hidden
+}
+
+.banner-img {
+    width: 100%;
+}
 
 .title {
+    color: white;
     position: relative;
-    top: 200px;
     text-align: center;
-    font-size: 45px;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+
+input{
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.subtitle{
+    color: white;
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.big-title {
+    color: black;
+    position: relative;
+    top: 100px;
+    text-align: center;
+    font-size: 200px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     margin-top: 10%;
@@ -14,18 +49,138 @@
     margin: 0;
     position: absolute;
     top: 40%;
+    height: 50%;
     width: 60%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.login-from {
+    margin: 0;
+    position: absolute;
+    height: 50%;
+    width: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.sign-up-btn{
+    margin-top: 20%;
+}
+
+.btn-primary{
+    margin-bottom: 30%;
+    background: linear-gradient(45deg, #05abe0 0%, #74CB92 100%);
+}
+
+.login-btn {
+    margin-top: 50%;
+}
+
+.login-from {
+    width: 100%;
+    margin-top: 40%;
+}
+
+p {
+    margin-top: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    color: white;
+}
+
+#id_username {
+    width: 100%;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    text-indent: 10px;
+    border-radius: 30px;
+}
+
+#id_email {
+    width: 100%;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    text-indent: 10px;
+    border-radius: 30px;
+}
+
+#id_password {
+    width: 100%;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    text-indent: 10px;
+    border-radius: 30px;
+}
+
+#id_password1 {
+    width: 100%;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    text-indent: 10px;
+    border-radius: 30px;
+}
+
+#id_password2 {
+    width: 100%;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    text-indent: 10px;
+    border-radius: 30px;
+}
+
+#id_password2_helptext{
+    list-style: none;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+ul {
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+.errorlist, .nonfield {
+    position: relative;
+}
+
+.errorlist, .ul {
+	list-style: none;
+    font-size: 26px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    color: #CB7474;
+}
+
+.btn-secondary {
+    background: none;
+    border: 1px solid black;
+    outline: white solid medium;
+}
+
 .btn {
     text-align: center;
     align-items: center;
     position: relative;
-    margin-top: 50%;
     width: 100%;
-    top: 50%;
     left: 50%;
     border-radius: 40px;
     font-size: 45px;

@@ -7,8 +7,11 @@ urlpatterns = [
     path("logout", views.userNotLoggedIn, name="logout_view"),
     path("login-signup", views.loginSignup, name="login-signup"),
     path("scan", views.scan, name="scan"),
-    path("map", views.userMap, name="userMap"),
+    path("rewards", views.rewards, name="rewards"),
+    path("expDemo", views.expDemo, name="expDemo"),
     path("leaderboard", views.leaderboard, name="leaderboard"),
     path("about", views.about, name="about"),
     path("profile", views.profile, name="profile"),
+    path("reset-password-code", views.resetPasswordCode, name="reset-password-code"),
+    path("reset-password", views.resetPassword, name="reset-password")
 ]
