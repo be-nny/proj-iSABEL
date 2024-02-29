@@ -12,4 +12,6 @@ urlpatterns = [
     path("leaderboard", views.leaderboard, name="leaderboard"),
     path("about", views.about, name="about"),
     path("profile", views.profile, name="profile"),
+    path("reset-password-code", views.resetPasswordCode, name="reset-password-code"),
+    path("reset-password", views.resetPassword, name="reset-password")
 ]

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+.qr-card {
+    margin-top: 10%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+}
+
+.ctn {
+    margin-bottom: 1000px;
+}
+
+#blank-space {
+    height: 200px;
+}

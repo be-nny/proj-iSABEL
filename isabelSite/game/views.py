@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
+from .models import MyUser
+from django.http import HttpResponse
+from django.template import loader
 
 """
 Initialises the login and sign up flow
@@ -12,6 +15,18 @@ class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
+
+"""
+View for sending a user reset password code
+"""
+def resetPasswordCode(request):
+    return render(request, "registration/reset-password-code.html", {})
+
+"""
+View for user password reset
+"""
+def resetPassword(request):
+    return render(request, "registration/reset-password.html", {})
 
 """
 View for the scan page, if a user isn't logged in, they are redirected
@@ -60,7 +75,12 @@ def leaderboard(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, "site/leaderboard.html", {})
+        mydata = MyUser.objects.all().order_by('user_xp').values()
+        template = loader.get_template('site/leaderboard.html')
+        context = {
+            'myusers': mydata,
+        }
+        return HttpResponse(template.render(context, request))
 
 """
 View for the users profile page, if a user isn't logged in, they are redirected
