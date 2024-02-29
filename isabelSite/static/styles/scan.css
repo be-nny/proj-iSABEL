@@ -1,0 +1,68 @@
+video {
+    border-radius: 30px;
+}
+
+#reader {
+    box-shadow: rgba(50, 50, 93, 0.5) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+#qr-shaded-region{
+    border-radius: 30px;
+}
+
+.scan-box{
+    margin-top: 10%;
+}
+
+.animated-border-box, .animated-border-box-glow{
+    height: 515px;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+    border-radius: 30px;
+}
+
+.animated-border-box-glow{
+    overflow: hidden;
+    /* Glow Blur */
+    filter: blur(20px);
+}
+
+.animated-border-box:before, .animated-border-box-glow:before {
+    content: '';
+    z-index: -2;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    width: 99999px;
+    height: 99999px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    /*border color, change middle color*/
+    background-image: conic-gradient(rgba(0,0,0,0), #1976ed, rgba(0,0,0,0) 25%);
+    /* change speed here */
+    animation: rotate 4s linear infinite;
+}
+
+.animated-border-box:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* border width */
+    left: 10px;
+    top: 10px;
+    /* double the px from the border width left */
+    /*bg color*/
+    background: #292a2e;
+    /*box border radius*/
+    border-radius: 30px;
+}
+
+@keyframes rotate {
+	100% {
+		transform: translate(-50%, -50%) rotate(1turn);
+	}
+}
