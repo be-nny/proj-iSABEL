@@ -36,11 +36,11 @@ class Migration(migrations.Migration):
             name='streak',
             field=models.IntegerField(default=0),
         ),
-        migrations.AddField(
-            model_name='myuser',
-            name='total_weight_recycled',
-            field=models.FloatField(default=0),
-        ),
+        # migrations.AddField(
+        #     model_name='myuser',
+        #     name='total_weight_recycled',
+        #     field=models.FloatField(default=0),
+        # ),
         migrations.AddField(
             model_name='myuser',
             name='user_xp',

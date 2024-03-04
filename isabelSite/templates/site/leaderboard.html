@@ -4,19 +4,49 @@
 {# Alicia Henderson 26/2/24 #}
 {% block content %}
 <div class="table-container">
-  <h1>Leaderboard</h1>
-    <table class = "table table-bordered table-striped">
-    <thead class="thead-dark">
-  <tr>
-    <th>User</th>
-    <th>Score</th>
-  </tr>
-  {% for x in myusers %}
-    <tr>
-        <td>{{ x.username }}</td>
-      <td>{{ x.user_xp }}</td>
-    </tr>
-  {% endfor %}
-</table>
+  <h1 class="subtitle">Leaderboard</h1>
+    <div class="card profile_card" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
+        <table class = "table table-bordered table-striped" id="userTable">
+            <thead class="thead-dark">
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+            </tr>
+            {% for x in myusers %}
+            <tr>
+                <td style="color: white;">{{ x.username }}</td>
+                <td style="color: white;" class="counter-count">{{ x.user_xp }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
+<script>
+    function sortTable() {
+        var table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById("userTable");
+        switching = true;
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("td")[1]; // Change index to sort based on different columns
+                y = rows[i + 1].getElementsByTagName("td")[1]; // Change index to sort based on different columns
+                if (Number(x.textContent) < Number(y.textContent)) {
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+
+    window.onload = function () {
+        sortTable();
+    };
+</script>
 {% endblock %}
