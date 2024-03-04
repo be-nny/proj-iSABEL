@@ -5,7 +5,8 @@ from selenium import webdriver
 def getAttributes(code):
     url = "https://www.barcodelookup.com/" + code
 
-    attributes = {"fair trade": 0, "emulsifier": 0, "United Kingdom": 0, "preservative": 0, "palm oil": 0, "vegetarian": 0, "vegan": 0, "aluminium": 0, "cardboard": 0, "plastic": 0, "meat": 0}
+    attributes = {"fair trade": 0, "emulsifier": 0, "United Kingdom": 0, "preservative": 0, "palm oil": 0,
+                  "vegetarian": 0, "vegan": 0, "aluminium": 0, "cardboard": 0, "plastic": 0, "meat": 0}
     meats = []
 
     dr = webdriver.Chrome()
@@ -43,7 +44,10 @@ def getAttributes(code):
         return (False, attributes)
 
 
-codes = ["50001690304311", "5099077002265", "5060490010533", "5000169200049", "5410316966139", "5010605400339", "5000328015583", "4009900532037", "8711200562725", "7622210470126", "5449000000996", "0787099226947", "5020411121151", "5010003000131", "5051898971137", "5000159510691"]
+if __name__ == "__main__":
+    codes = ["50001690304311", "5099077002265", "5060490010533", "5000169200049", "5410316966139", "5010605400339",
+             "5000328015583", "4009900532037", "8711200562725", "7622210470126", "5449000000996", "0787099226947",
+             "5020411121151", "5010003000131", "5051898971137", "5000159510691"]
 
-for code in codes:
-    print(getAttributes(code))
+    for code in codes:
+        print(getAttributes(code))
