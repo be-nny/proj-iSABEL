@@ -132,7 +132,7 @@ Dial.prototype.animateStart = function() {
             clearInterval(intervalOne);
         }
         self.setValue(v);
-    }, 10);
+    }, 30);
 };
 
 Dial.prototype.animateReset = function() {
