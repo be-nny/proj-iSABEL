@@ -2,6 +2,13 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
+class Report:
+    report_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    reported_at = models.DateTimeField(auto_now_add=True)
+    message = models.CharField(max_length=200, null=False)
+
+    def __str__(self):
+        return self.message
 
 # Define a custom user model inheriting from AbstractUser
 class MyUser(AbstractUser):
