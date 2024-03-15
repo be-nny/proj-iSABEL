@@ -1,8 +1,9 @@
 {% extends "site/base.html" %}
 {% load exp_tags %}
-
 {% block content %}
+
 {% if user.is_authenticated %}
+
     <div class="card profile_card" data-aos="flip-left" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
         <div class="card-body">
             <h1 class="card-title">Profile</h1>
@@ -10,7 +11,6 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="bi bi-at"></i> {{ user.username }}</li>
                 <li class="list-group-item"><i class="bi bi-envelope"></i> {{ user.email }}</li>
-                <li class="list-group-item"><i class="bi bi-graph-up"></i> {% calculateLevelAndExp user 0 %}</li>
             </ul>
             <a href="{% url 'logout_view' %}" class="btn btn-primary">Log Out</a>
         </div>
@@ -18,15 +18,16 @@
     <div class="card stats_card" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" style="border-radius: 40px">
         <div class="card-body">
             <h1 class="card-title">Stats</h1>
-            <div id="xp-level-frac">
-                <h5 class="counter counter-count">{% calculateLevelAndExp user 1 %}</h5>
-                <h5 class="counter">/</h5>
-                <h5 class="counter counter-count">{% calculateLevelAndExp user 2 %}</h5>
-                <h5 class="counter sub-txt">xp</h5>
+            <div class="chart-wrapper">
+                <div class="chart-ctn chart" data-size="400" data-exp="{% calculateLevelAndExp user 1 %}" data-total="{% calculateLevelAndExp user 2 %}" data-arrow="up"></div>
             </div>
+
+            <h1 class="level">{% calculateLevelAndExp user 0 %}</h1>
+
             <div id="weight-recycled">
-                <h5 class="counter counter-count">{{ user.weight_recycled }}</h5>
-                <h5 class="counter sub-txt">kg</h5>
+                <h5 class="counter">You've saved an estimated </h5>
+                <h5 class="counter counter-count-dec">{{ user.weight_recycled }}</h5>
+                <h5 class="counter">kg of waste!</h5>
             </div>
         </div>
     </div>

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'styles/about.css' %}" />
 </head>
 <body>
+
     <div class="card profile_card" data-aos="fade-right" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
         <div class="card-body">
             <h1 class="card-title">Our vision</h1>
@@ -23,25 +24,36 @@
             </ul>
         </div>
     </div>
-<div style="padding-top: 30px;">
-  <p style="color: white;font-size: 30px;margin-left: 0px;margin-right: 0px;">After much planning and deliberation, iSABEL imagined a system where users could scan
-      the barcodes of food items purchased on campus and receive XP rewards based on their
-      sustainability ranking. Scanning an item would add it to a user's virtual 'basket'. Items that are vegetarian, vegan, don't contain
-      palm oil, have recyclable packaging etc., encourage faster levelling. Players compete to top the leaderboard and
-      help to reduce littering, promote recycling, and more sustainable food options on campus. </p>
-</div>
+    <div class="card profile_card" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
+        <div class="card-body" style="padding: 30px;">
+          <p style="color: white;font-size: 30px; width:100%;word-wrap: break-word;">After much planning and deliberation, iSABEL imagined a system where users could scan
+              the barcodes of food items purchased on campus and receive XP rewards based on their
+              sustainability ranking. Scanning an item would add it to a user's virtual 'basket'. Items that are vegetarian, vegan, don't contain
+              palm oil, have recyclable packaging etc., encourage faster levelling. Players compete to top the leaderboard and
+              help to reduce littering, promote recycling, and more sustainable food options on campus.
+            <br>
+            <br>
+            Please see our <a href="https://www.iubenda.com/privacy-policy/54455560/cookie-policy" class="iubenda-white iubenda-noiframe iubenda iubenda-noiframe">Cookie Policy and Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+        </div>
+
+    </div>
+
     <div style="padding-top: 20px;">
-      <div class="team-members">
-        <div class="member">
-          <img src="../static/assets/uni-logo.png" alt="University of Exeter">
-          <h3 style="color:white;font-size: 20px;padding-top:10px;">University of Exeter</h3>
+        <div class="team-members">
+            <div class="member">
+                <img src="../static/assets/uni-logo.png" alt="University of Exeter">
+                <h3 style="color:white;font-size: 20px;padding-top:10px;">University of Exeter</h3>
+            </div>
+            <div class="member">
+                <img src="../static/assets/iSABEL-logo-small-light.png" alt="Miss iSabel">
+                <h3 style="padding-top:10px;color:white;font-size: 20px;">iSABEL</h3>
+            </div>
         </div>
-          <div class="member">
-              <img src="../static/assets/iSABEL-logo-small-light.png" alt="Miss iSabel">
-              <h3 style="padding-top:10px;color:white;font-size: 20px;">iSABEL</h3>
-          </div>
-          </div>
-        </div>
+        <br>
+        <br>
+        <br>
+        <div id="blank-space"></div>
+    </div>
 </div>
 </body>
 {% endblock %}

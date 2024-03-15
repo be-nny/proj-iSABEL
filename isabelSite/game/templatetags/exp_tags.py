@@ -8,14 +8,15 @@ import math
 register = template.Library()
 
 @register.simple_tag
-def updateUserFromBCode(user, request):
-    code = request.GET.get("code", "0")
+def updateUserFromBCode(user, code):
+    # code = request.GET.get("code", "0")
     return updateUserExp(user, code)
 
 def updateUserExp(user, code):
     (exists, attributes) = getAttributes(code)
     points_to_add = calculatePointsToAdd(exists, attributes)
-    user.weight_recycled += attributes["weight"] / 100
+    if 'weight' in attributes:
+        user.weight_recycled += float(attributes['weight']) / float(1000)
     user.user_xp += points_to_add
     user.save()
     return points_to_add

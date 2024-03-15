@@ -7,7 +7,7 @@
 {% if user.is_authenticated %}
   Hello {{ user.username }}! <br/>
   Exp Before : {{ user.user_xp }} <br/>
-  Exp Added : {% updateUserFromBCode user request %} <br>
+  Exp Added : {% updateUserFromBCode user "5099802150117" %} <br>
   Exp After : {{ user.user_xp }} <br/>
   {% calculateLevelAndExp user 0 %}
   <form action="/game/expDemo">

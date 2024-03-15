@@ -1,7 +1,18 @@
 {% extends "site/base.html" %}
+{% load static %}
+{% load exp_tags %}
 
 {% block title %}Scan Page{% endblock %}
 
 {% block content %}
+    <h1 class="subtitle">Scan a barcode/QR code</h1>
+    <div class="scan-box">
+        <div class="animated-border-box-glow"></div>
+        <div class="animated-border-box">
+            <div id="reader" data-aos-duration="1500"></div>
+        </div>
+    </div>
 
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="{% static 'scripts/camera.js' %}"></script>
 {% endblock %}

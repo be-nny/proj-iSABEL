@@ -1,12 +1,14 @@
 from django.contrib.auth import logout
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
 from .models import MyUser
 from django.http import HttpResponse
 from django.template import loader
+
+from .templatetags.exp_tags import updateUserFromBCode
 
 """
 Initialises the login and sign up flow
@@ -99,3 +101,13 @@ def about(request):
         return userNotLoggedIn(request)
     else:
         return render(request, "site/about.html", {})
+
+def update_user_from_bcode(request):
+    decoded_text = request.GET.get('code', '0')
+    updateUserFromBCode(request.user, decoded_text)
+
+    # Assuming you're sending decodedText as a query parameter
+    # Perform actions to update user based on decoded_text
+    # Example:
+    # user.update(decoded_text)
+    return JsonResponse({'success': True})
