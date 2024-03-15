@@ -1,16 +1,20 @@
 from django import template
 from bs4 import BeautifulSoup
 import re
+
+from django.http import JsonResponse
 from selenium import webdriver
 import copy
 import math
 
 register = template.Library()
 
+
 @register.simple_tag
 def updateUserFromBCode(user, code):
     # code = request.GET.get("code", "0")
     return updateUserExp(user, code)
+
 
 def updateUserExp(user, code):
     (exists, attributes) = getAttributes(code)
@@ -21,9 +25,11 @@ def updateUserExp(user, code):
     user.save()
     return points_to_add
 
+
 def calculatePointsToAdd(exists, attributes):
     if exists:
-        attribute_weights = {'fair trade': 50, 'emulsifier': -10, 'United Kingdom': 15, 'preservative': -15, 'palm oil': -50,
+        attribute_weights = {'fair trade': 50, 'emulsifier': -10, 'United Kingdom': 15, 'preservative': -15,
+                             'palm oil': -50,
                              'vegetarian': 25, 'vegan': 25, 'aluminium': 30, 'cardboard': 20, 'plastic': 15, 'meat': 10,
                              'weight': 0.25}
         points = 100
@@ -32,10 +38,12 @@ def calculatePointsToAdd(exists, attributes):
         return round(points)
     return 0
 
+
 def getAttributes(code):
     url = "https://www.barcodelookup.com/" + code
 
-    attributes = {"fair trade": 0, "emulsifier": 0, "United Kingdom": 0, "preservative": 0, "palm oil": 0, "vegetarian": 0, "vegan": 0, "aluminium": 0, "cardboard": 0, "plastic": 0, "meat": 0}
+    attributes = {"fair trade": 0, "emulsifier": 0, "United Kingdom": 0, "preservative": 0, "palm oil": 0,
+                  "vegetarian": 0, "vegan": 0, "aluminium": 0, "cardboard": 0, "plastic": 0, "meat": 0}
     meats = []
 
     dr = webdriver.Chrome()
@@ -72,6 +80,7 @@ def getAttributes(code):
     else:
         return (False, attributes)
 
+
 @register.simple_tag
 def calculateLevelAndExp(user, index):
     current_exp = copy.copy(user.user_xp)
@@ -83,12 +92,24 @@ def calculateLevelAndExp(user, index):
         next_level_exp = expForNextLevel(level)
     return (level, current_exp, next_level_exp)[index]
 
+
 def expForNextLevel(current_level):
     if current_level >= 199:
         return 200000
-    return round(10000 * (10.1 * math.tanh((2.65/100) * (current_level - 99)) + 10))
+    return round(10000 * (10.1 * math.tanh((2.65 / 100) * (current_level - 99)) + 10))
+
 
 @register.simple_tag
 def tempReset(user):
     user.user_xp = 0
     user.save()
+
+
+@register.simple_tag
+def spendXP(user, amount):
+    if user.user_xp > int(amount):
+        user.user_xp -= int(amount)
+        user.save()
+        return True
+    else:
+        return False
