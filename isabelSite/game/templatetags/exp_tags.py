@@ -27,16 +27,16 @@ def updateUserExp(user, code):
 
 
 def calculatePointsToAdd(exists, attributes):
-    if exists:
-        attribute_weights = {'fair trade': 50, 'emulsifier': -10, 'United Kingdom': 15, 'preservative': -15,
-                             'palm oil': -50,
-                             'vegetarian': 25, 'vegan': 25, 'aluminium': 30, 'cardboard': 20, 'plastic': 15, 'meat': 10,
-                             'weight': 0.25}
-        points = 100
-        for attribute, presence in attributes.items():
-            points += attribute_weights[attribute] * presence
-        return round(points)
-    return 0
+    if exists == "0":
+        return 0
+    attribute_weights = {'fair trade': 50, 'emulsifier': -10, 'United Kingdom': 15, 'preservative': -15,
+                         'palm oil': -50,
+                         'vegetarian': 25, 'vegan': 25, 'aluminium': 30, 'cardboard': 20, 'plastic': 15, 'meat': 10,
+                         'weight': 0.25}
+    points = 100
+    for attribute, presence in attributes.items():
+        points += attribute_weights[attribute] * presence
+    return round(points)
 
 
 def getAttributes(code):
@@ -52,6 +52,7 @@ def getAttributes(code):
     result = bs.find(id="product")
     if not result is None:
         elements = result.find_all("div", class_="product-meta-data")
+        name = result.find("h4")
 
         for element in elements:
             # checks for any of the attributes in each element of the html
@@ -75,10 +76,9 @@ def getAttributes(code):
             else:
                 attributes["weight"] = 0
 
-        return (True, attributes)
+        return (name, attributes)
 
-    else:
-        return (False, attributes)
+    return ("0", attributes)
 
 
 @register.simple_tag
