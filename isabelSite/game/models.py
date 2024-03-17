@@ -69,6 +69,12 @@ class MyUser(AbstractUser):
     def get_golden_bins_collected(self):
         return self.golden_bins_collected
 
+    def get_reset_code(self):
+        return self.reset_code
+
+    def set_reset_code(self, new_code):
+        self.reset_code = new_code
+
     # Define the string representation of the user
     def __str__(self):
         return self.username

@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-*v^-es_6+g3m6wh!wrj#x!#qf9^tlz#l&2qi^$o-6*g9256^7c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*", "projectISABEL.pythonanywhere.com"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -78,7 +78,6 @@ TEMPLATES = [
             ],
             'builtins': [
                 'game.templatetags.exp_tags',
-                'game.templatetags.password_reset_tags'
             ]
         },
     },
@@ -152,9 +151,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "scan"
 LOGOUT_REDIRECT_URL = "logout_view"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "user.info.isabel@gmail.com"
-EMAIL_HOST_PASSWORD = "99bQ$%5yvO1B"
+EMAIL_HOST_PASSWORD = "oeeqzngnnuoufkiq"

@@ -2,8 +2,9 @@
 
 .qr-card {
     margin-top: 10%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;!important;
     font-size: 30px;
+    color: white;
 }
 
 .ctn {
@@ -12,4 +13,25 @@
 
 #blank-space {
     height: 200px;
+}
+
+.card-price {
+    font-family: 'Montserrat', sans-serif;!important;
+    font-size: 40px;
+    color : white;
+}
+
+.card-text {
+    margin-top: 10%;
+    font-family: 'Montserrat', sans-serif;!important;
+    font-size: 30px;
+    color : white;
+}
+
+.blurred-image {
+        filter: blur(15px); /* Adjust blur level as needed */
+    }
+
+.btn-primary{
+    background: linear-gradient(45deg, #05abe0 0%, #74CB92 100%);
 }
