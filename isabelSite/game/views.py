@@ -9,12 +9,10 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .templatetags.exp_tags import updateUserFromBCode, spendXP
-from .templatetags.password_reset_tags import *
+
 """
 Initialises the login and sign up flow
 """
-
-
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
