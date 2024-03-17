@@ -22,8 +22,6 @@ class SignUp(CreateView):
 """
 View for the scan page, if a user isn't logged in, they are redirected
 """
-
-
 def scan(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -34,8 +32,6 @@ def scan(request):
 """
 View for the update page, if a user isn't logged in, they are redirected
 """
-
-
 def expDemo(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -46,8 +42,6 @@ def expDemo(request):
 """
 When a user isn't logged in, they are redirected to the log in and sign up page
 """
-
-
 def userNotLoggedIn(request):
     logout(request)
     return render(request, "registration/login-signup.html", {})
@@ -56,8 +50,6 @@ def userNotLoggedIn(request):
 """
 View for the login and sign up page
 """
-
-
 def loginSignup(request):
     return render(request, "registration/login-signup.html", {})
 
@@ -65,8 +57,6 @@ def loginSignup(request):
 """
 View for the user map page, if a user isn't logged in, they are redirected
 """
-
-
 def rewards(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -77,8 +67,6 @@ def rewards(request):
 """
 View for the leaderboard page, if a user isn't logged in, they are redirected
 """
-
-
 def leaderboard(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -94,8 +82,6 @@ def leaderboard(request):
 """
 View for the users profile page, if a user isn't logged in, they are redirected
 """
-
-
 def profile(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -106,8 +92,6 @@ def profile(request):
 """
 View for the about page, if a user isn't logged in, they are redirected
 """
-
-
 def about(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -137,8 +121,6 @@ def buy_voucher(request):
 """
 View for the gamekeeper page where they can view all users and their rank, if a user isn't logged in, they are redirected
 """
-
-
 def users(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -148,8 +130,6 @@ def users(request):
     """
     View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
     """
-
-
 def reports(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)

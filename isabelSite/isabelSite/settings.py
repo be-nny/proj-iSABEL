@@ -78,7 +78,6 @@ TEMPLATES = [
             ],
             'builtins': [
                 'game.templatetags.exp_tags',
-                'game.templatetags.password_reset_tags'
             ]
         },
     },
