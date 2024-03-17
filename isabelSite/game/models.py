@@ -26,6 +26,8 @@ class MyUser(AbstractUser):
     weight_recycled = models.FloatField(default=0)
     streak = models.IntegerField(default=0)
 
+    reset_code = models.CharField(max_length=6)
+
     # change the directory later
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     leaderboard_position = models.IntegerField(default=-1)
@@ -68,6 +70,12 @@ class MyUser(AbstractUser):
 
     def get_golden_bins_collected(self):
         return self.golden_bins_collected
+
+    def get_reset_code(self):
+        return self.reset_code
+
+    def set_reset_code(self, new_code):
+        self.reset_code = new_code
 
     # Define the string representation of the user
     def __str__(self):

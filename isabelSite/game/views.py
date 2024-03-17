@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .templatetags.exp_tags import updateUserFromBCode, spendXP
-
+from .templatetags.password_reset_tags import *
 """
 Initialises the login and sign up flow
 """
@@ -19,24 +19,6 @@ class SignUp(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
-
-
-"""
-View for sending a user reset password code
-"""
-
-
-def resetPasswordCode(request):
-    return render(request, "registration/reset-password-code.html", {})
-
-
-"""
-View for user password reset
-"""
-
-
-def resetPassword(request):
-    return render(request, "registration/reset-password.html", {})
 
 
 """

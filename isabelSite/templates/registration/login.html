@@ -9,7 +9,6 @@
         <p>Password</p>
         {{ form.password }}
         <button type="submit" class="btn btn-primary login-btn">Log In</button>
-        <br>
-{#        <a href="{% url 'reset-password-code' %}">Forgot Password?</a> #}
+        <h2 class="subtitle" style="text-align: center"><a href="{% url 'password_reset' %}">Forgot Password?</a></h2>
     </form>
 {% endblock %}
