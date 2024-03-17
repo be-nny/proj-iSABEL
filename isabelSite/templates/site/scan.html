@@ -18,8 +18,9 @@
     </button>
 </div>
 
-<div id="reportForm" class="hide">
-    <form>
+<div id="reportFormDiv" class="hide">
+    <form id="reportForm" action="{% url 'save_report' %}" method="post">
+        {% csrf_token %}
         <label for="reportInputField" id="reportLabel">Report:</label><br>
         <input type="text" id="reportInputField" name="reportInputField"><br><br>
         <button type="submit" class="btn btn-primary">Submit</button>
