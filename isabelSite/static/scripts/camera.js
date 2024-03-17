@@ -12,7 +12,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             }
         }
     } else{
-        //TODO QR BINS
+        console.log(decodedText);
     }
 };
 
