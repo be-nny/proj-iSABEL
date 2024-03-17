@@ -24,13 +24,7 @@ SECRET_KEY = "django-insecure-*v^-es_6+g3m6wh!wrj#x!#qf9^tlz#l&2qi^$o-6*g9256^7c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-# EMAIL INFO
-EMAIL_HOST = ""
-EMAIL_PORT = ""
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ""
+ALLOWED_HOSTS = ["*","projectISABEL.pythonanywhere.com"]
 
 # Application definition
 INSTALLED_APPS = [
