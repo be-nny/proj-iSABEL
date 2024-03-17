@@ -8,14 +8,14 @@
     margin-left: auto;
     margin-right: auto;
 }
-.counter {
-    position: relative;
-    font-size: 150px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    display: inline;
-    color: white;
-}
+/*.counter {*/
+/*    position: relative;*/
+/*    font-size: 150px;*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*    font-weight: 600;*/
+/*    display: inline;*/
+/*    color: white;*/
+/*}*/
 .card {
     background: #292a2e!important;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
