@@ -152,3 +152,26 @@ def buy_voucher(request):
     if request:
         return JsonResponse({'success': True})
     return JsonResponse({'success': False})
+
+
+"""
+View for the gamekeeper page where they can view all users and their rank, if a user isn't logged in, they are redirected
+"""
+
+
+def users(request):
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return render(request, 'gamekeeper/users.html', {})
+
+    """
+    View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
+    """
+
+
+def reports(request):
+    if not request.user.is_authenticated:
+        return userNotLoggedIn(request)
+    else:
+        return render(request, 'gamekeeper/reports.html', {})
