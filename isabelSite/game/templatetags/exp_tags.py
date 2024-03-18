@@ -46,7 +46,7 @@ def getAttributes(code):
     meats = []
 
     chrome_options = webdriver.ChromeOptions()
-    options.add_argument('--headless=new')
+    chrome_options.add_argument('--headless=new')
     chrome_options.add_argument('--no-sandbox')  # Required when running as root
     dr = webdriver.Chrome(options=chrome_options)
     try:
