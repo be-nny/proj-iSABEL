@@ -1,10 +1,12 @@
 {% extends "site/base.html" %}
 {% load exp_tags %}
+{% load report_tags %}
 
 {% block title %}Update Page{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
+  {% save_report request %}
   Hello {{ user.username }}! <br/>
   Exp Before : {{ user.user_xp }} <br/>
   Exp Added : {% updateUserFromBCode user "5099802150117" %} <br>
