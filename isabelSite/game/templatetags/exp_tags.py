@@ -1,9 +1,8 @@
 from django import template
 from bs4 import BeautifulSoup
-import re
-
-from django.http import JsonResponse
 from selenium import webdriver
+
+import re
 import copy
 import math
 
@@ -48,41 +47,43 @@ def getAttributes(code):
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument("--disable-dev-shm-usage")
     dr = webdriver.Chrome(options=chrome_options)
+    try:
+        dr.get(url)
+        bs = BeautifulSoup(dr.page_source, "html.parser")
+        result = bs.find(id="product")
+        if not result is None:
+            elements = result.find_all("div", class_="product-meta-data")
+            name = result.find("h4")
 
-    dr.get(url)
-    bs = BeautifulSoup(dr.page_source, "html.parser")
-    result = bs.find(id="product")
-    if not result is None:
-        elements = result.find_all("div", class_="product-meta-data")
-        name = result.find("h4")
+            for element in elements:
+                # checks for any of the attributes in each element of the html
+                info = element.find("span", class_="product-text")
+                if not info is None:
+                    for attribute in attributes:
+                        if attribute.lower() in info.text.lower():
+                            attributes[attribute] = 1
 
-        for element in elements:
-            # checks for any of the attributes in each element of the html
-            info = element.find("span", class_="product-text")
-            if not info is None:
-                for attribute in attributes:
-                    if attribute.lower() in info.text.lower():
-                        attributes[attribute] = 1
+                # Checks for the weight information of the product if given
+                technical = element.find("ul", id="product-attributes")
+                if not technical is None:
+                    for i in technical:
+                        if "size" in i.text.lower():
+                            integer_part = re.search(r'\d+', i.text).group()
+                            attributes["weight"] = int(integer_part)
+                        elif "weight" not in attributes:
+                            attributes["weight"] = 0
+                        if "weight" in i.text.lower():
+                            print(i.text, "\n")
+                else:
+                    attributes["weight"] = 0
 
-            # Checks for the weight information of the product if given
-            technical = element.find("ul", id="product-attributes")
-            if not technical is None:
-                for i in technical:
-                    if "size" in i.text.lower():
-                        integer_part = re.search(r'\d+', i.text).group()
-                        attributes["weight"] = int(integer_part)
-                    elif "weight" not in attributes:
-                        attributes["weight"] = 0
-                    if "weight" in i.text.lower():
-                        print(i.text, "\n")
-            else:
-                attributes["weight"] = 0
+            return (name, attributes)
 
-        return (name, attributes)
-
-    return ("0", attributes)
+        return ("0", attributes)
+    finally:
+        dr.quit()
 
 
 @register.simple_tag
