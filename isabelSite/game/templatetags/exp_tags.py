@@ -46,7 +46,12 @@ def getAttributes(code):
                   "vegetarian": 0, "vegan": 0, "aluminium": 0, "cardboard": 0, "plastic": 0, "meat": 0}
     meats = []
 
-    dr = webdriver.Chrome()
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    dr = webdriver.Chrome(options=chrome_options)
+
     dr.get(url)
     bs = BeautifulSoup(dr.page_source, "html.parser")
     result = bs.find(id="product")
