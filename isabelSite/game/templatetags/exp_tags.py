@@ -80,7 +80,10 @@ def getAttributes(code):
 
     try:
         dr.get(url)
+        time.sleep(5)
         bs = BeautifulSoup(dr.page_source, "html.parser")
+        dr.get_screenshot_as_file("screenshot.png")
+
         logging.basicConfig(level=logging.DEBUG)  # Set log level to DEBUG or higher
         result = bs.find(id="product")
         if not result is None:
@@ -109,8 +112,6 @@ def getAttributes(code):
                 else:
                     attributes["weight"] = 0
             return (name, attributes)
-        logging.debug("asdf asdf ")
-
         return ("0", attributes)
     finally:
         dr.quit()
