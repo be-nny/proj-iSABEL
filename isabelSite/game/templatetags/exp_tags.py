@@ -46,10 +46,8 @@ def getAttributes(code):
     meats = []
 
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.binary_location = "/usr/bin/chromium"
-    dr = webdriver.Chrome("/home/projectISABEL/.virtualenvs/env/bin/chromedriver",options=chrome_options)
+    chrome_options.add_argument('--no-sandbox')  # Required when running as root
+    dr = webdriver.Chrome(options=chrome_options)
     try:
         dr.get(url)
         bs = BeautifulSoup(dr.page_source, "html.parser")
