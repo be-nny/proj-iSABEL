@@ -4,10 +4,10 @@ from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
-from .models import MyUser
+from .models import MyUser, Report
 from django.http import HttpResponse
 from django.template import loader
-
+from django.views.decorators.http import require_POST
 from .templatetags.exp_tags import updateUserFromBCode, spendXP
 
 """
@@ -135,3 +135,12 @@ def reports(request):
         return userNotLoggedIn(request)
     else:
         return render(request, 'gamekeeper/reports.html', {})
+
+@require_POST
+def save_report(request):
+    message = request.POST.get('reportInputField')
+    if message != "":
+        new_report = Report.objects.create(message=message)
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False, 'error': 'Message is required'})

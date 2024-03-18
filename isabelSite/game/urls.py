@@ -16,5 +16,7 @@ urlpatterns = [
     path("users", views.users, name="users"),
     path("update_user_from_bcode", views.update_user_from_bcode, name="update_user_from_bcode"),
     path("buy_voucher", views.buy_voucher, name="buy_voucher"),
+    path("save-report", views.save_report, name='save_report'),
+
 
 ]

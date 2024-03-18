@@ -2,8 +2,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
-
-class Report:
+class Report(models.Model):
     report_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     reported_at = models.DateTimeField(auto_now_add=True)
     message = models.CharField(max_length=200, null=False)
@@ -81,3 +80,4 @@ class MyUser(AbstractUser):
         return self.username
 
 # Author: Merve Ipek Bal
+
