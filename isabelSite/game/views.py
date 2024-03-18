@@ -138,7 +138,7 @@ def reports(request):
 
 @require_POST
 def save_report(request):
-    message = request.POST.get('message')
+    message = request.POST.get('reportInputField')
     if message != "":
         new_report = Report.objects.create(message=message)
         return JsonResponse({'success': True})

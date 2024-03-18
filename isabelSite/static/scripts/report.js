@@ -13,11 +13,12 @@ document.getElementById('reportForm').addEventListener('submit', function (event
     var form = this;
     var formData = new FormData(form);
 
+    var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
     fetch(form.action, {
         method: 'POST',
         body: formData,
         headers: {
-            'X-CSRFToken': '{{ csrf_token }}'
+            'X-CSRFToken': csrfToken
         }
     })
         .then(response => response.json())
