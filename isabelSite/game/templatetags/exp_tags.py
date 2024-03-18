@@ -48,6 +48,7 @@ def getAttributes(code):
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.binary_location = "/usr/bin/chromium"
     dr = webdriver.Chrome(options=chrome_options)
     try:
         dr.get(url)
