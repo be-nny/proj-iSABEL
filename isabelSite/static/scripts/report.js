@@ -8,29 +8,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     })
 
-document.getElementById('reportForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent default form submission
-    var form = this;
-    var formData = new FormData(form);
-
-    var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
-    fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'X-CSRFToken': csrfToken
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Report saved successfully!');
-                form.reset(); // Clear form fields
-            } else {
-                alert('Error: ' + data.error);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
+//document.getElementById('reportForm').addEventListener('submit', function (event) {
+//    event.preventDefault(); // Prevent default form submission
+//    var form = this;
+//    var formData = new FormData(form);
+//
+//    var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+//    fetch(form.action, {
+//        method: 'POST',
+//        body: formData,
+//        headers: {
+//            'X-CSRFToken': csrfToken
+//        }
+//    })
+//        .then(response => response.json())
+//        .then(data => {
+//            if (data.success) {
+//                alert('Report saved successfully!');
+//                form.reset(); // Clear form fields
+//            } else {
+//                alert('Error: ' + data.error);
+//            }
+//        })
+//        .catch(error => {
+//            console.error('Error:', error);
+//        });
+//    });

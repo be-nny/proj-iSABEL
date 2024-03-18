@@ -1,10 +1,12 @@
 {% extends "site/base.html" %}
 {% load static %}
 {% load exp_tags %}
+{% load report_tags %}
 
 {% block title %}Scan Page{% endblock %}
 
 {% block content %}
+    {% save_report request %}
     <h1 class="subtitle">Scan a barcode/QR code</h1>
     <div class="scan-box">
         <div class="animated-border-box-glow"></div>
@@ -19,7 +21,7 @@
 </div>
 
 <div id="reportFormDiv" class="hide">
-    <form id="reportForm" action="{% url 'save_report' %}" method="post">
+    <form id="reportForm" action="/game/scan">
         {% csrf_token %}
         <label for="reportInputField" id="reportLabel">Report:</label><br>
         <input type="text" id="reportInputField" name="reportInputField"><br><br>
