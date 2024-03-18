@@ -1,3 +1,6 @@
+import logging
+import time
+
 from django import template
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -46,12 +49,19 @@ def getAttributes(code):
     meats = []
 
     chrome_options = webdriver.ChromeOptions()
+    user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+    chrome_options.add_argument(f'user-agent={user_agent}')
     chrome_options.add_argument('--headless=new')
     chrome_options.add_argument('--no-sandbox')  # Required when running as root
     dr = webdriver.Chrome(options=chrome_options)
+
     try:
         dr.get(url)
+        time.sleep(5)
         bs = BeautifulSoup(dr.page_source, "html.parser")
+        dr.get_screenshot_as_file("screenshot.png")
+
+        logging.basicConfig(level=logging.DEBUG)  # Set log level to DEBUG or higher
         result = bs.find(id="product")
         if not result is None:
             elements = result.find_all("div", class_="product-meta-data")
@@ -78,8 +88,8 @@ def getAttributes(code):
                             print(i.text, "\n")
                 else:
                     attributes["weight"] = 0
-
             return (name, attributes)
+        logging.debug("asdf asdf ")
 
         return ("0", attributes)
     finally:
