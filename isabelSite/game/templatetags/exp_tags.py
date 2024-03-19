@@ -96,6 +96,7 @@ def getAttributes(code):
             time.sleep(5)
         except Exception:
             pass
+
         bs = BeautifulSoup(dr.page_source, "html.parser")
         dr.get_screenshot_as_file("screenshot.png")
 
