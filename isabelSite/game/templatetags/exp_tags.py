@@ -5,6 +5,9 @@ import time
 from django import template
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 import re
 import copy
@@ -102,6 +105,8 @@ def getAttributes(code):
     dr = webdriver.Chrome(options=chrome_options)
     try:
         dr.get(url)
+        WebDriverWait(dr, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@title='Widget containing a Cloudflare security challenge']")))
+        WebDriverWait(dr, 20).until(EC.element_to_be_clickable((By.XPATH, "//label[@class='ctp-checkbox-label']"))).click()
         time.sleep(5)
         bs = BeautifulSoup(dr.page_source, "html.parser")
         dr.get_screenshot_as_file("screenshot.png")
