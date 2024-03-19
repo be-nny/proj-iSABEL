@@ -1,10 +1,12 @@
 {% extends "site/base.html" %}
 {% load static %}
 {% load exp_tags %}
+{% load report_tags %}
 
 {% block title %}Scan Page{% endblock %}
 
 {% block content %}
+    {% save_report request %}
     <h1 class="subtitle">Scan a barcode/QR code</h1>
     <div class="scan-box">
         <div class="animated-border-box-glow"></div>
@@ -12,7 +14,23 @@
             <div id="reader" data-aos-duration="1500"></div>
         </div>
     </div>
+<div class="button-container">
+    <button type="button" id="reportButton" class="btn btn-danger btn-rounded btn-icon">
+        <i class="bi bi-flag"></i>
+    </button>
+</div>
+
+<div id="reportFormDiv" class="hide">
+    <form id="reportForm" action="/game/scan">
+        {% csrf_token %}
+        <label for="reportInputField" id="reportLabel">Report:</label><br>
+        <input type="text" id="reportInputField" name="reportInputField"><br><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="{% static 'scripts/camera.js' %}"></script>
+    <script src="{% static 'scripts/report.js' %}"></script>
 {% endblock %}
