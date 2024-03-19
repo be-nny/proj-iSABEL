@@ -54,24 +54,6 @@ def getAttributes(code):
 
     chrome_options = webdriver.ChromeOptions()
 
-    proxy_list = [
-        '138.68.60.8:3128',
-        '54.66.104.168:80',
-        '80.48.119.28:8080',
-        '157.100.26.69:80',
-        '198.59.191.234:8080',
-        '198.49.68.80:80',
-        '169.57.1.85:8123',
-        '219.78.228.211:80',
-        '88.215.9.208:80',
-        '130.41.55.190:8080',
-        '88.210.37.28:80',
-        '128.199.202.122:8080',
-        '2.179.154.157:808',
-        '165.154.226.12:80',
-        '200.103.102.18:80'
-    ]
-
     user_agents = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36",
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
@@ -96,7 +78,6 @@ def getAttributes(code):
     ]
 
     chrome_options.add_argument(f'user-agent={random.choice(user_agents)}')
-    # chrome_options.add_argument("--proxy-server=%s" % {random.choice(proxy_list)})
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
     chrome_options.add_experimental_option("useAutomationExtension", False)
@@ -105,12 +86,16 @@ def getAttributes(code):
     dr = webdriver.Chrome(options=chrome_options)
     try:
         dr.get(url)
-        WebDriverWait(dr, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@title='Widget containing a Cloudflare security challenge']")))
-        WebDriverWait(dr, 20).until(EC.element_to_be_clickable((By.XPATH, "//label[@class='ctp-checkbox-label']"))).click()
-        time.sleep(10)
-        WebDriverWait(dr, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@title='Widget containing a Cloudflare security challenge']")))
-        WebDriverWait(dr, 20).until(EC.element_to_be_clickable((By.XPATH, "//label[@class='ctp-checkbox-label']"))).click()
-        time.sleep(5)
+        try:
+            # Switch to the CAPTCHA iframe
+            WebDriverWait(dr, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@title='Widget containing a Cloudflare security challenge']")))
+            # Click the "I'm not a robot" checkbox
+            WebDriverWait(dr, 20).until(EC.element_to_be_clickable((By.XPATH, "//label[@class='ctp-checkbox-label']"))).click()
+            # Wait for the CAPTCHA challenge to be resolved (adjust timeout as needed)
+            WebDriverWait(dr, 10).until(EC.invisibility_of_element_located((By.XPATH, "//div[@class='g-recaptcha']")))
+            time.sleep(5)
+        except Exception:
+            pass
         bs = BeautifulSoup(dr.page_source, "html.parser")
         dr.get_screenshot_as_file("screenshot.png")
 
