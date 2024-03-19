@@ -2,12 +2,13 @@ const html5QrCode = new Html5Qrcode("reader");
 let prev_code = "";
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     let code_Result = decodedResult.result.format.formatName
-    if (code_Result != 'QR_CODE'){
-        if(prev_code != decodedText) {
+    if (code_Result !== 'QR_CODE'){
+        if(prev_code !== decodedText) {
             prev_code = decodedText
-            if (decodedText == "") {
+            if (decodedText === "") {
                 updateUserFromBCode("0");
             } else {
+                console.log(decodedText);
                 updateUserFromBCode(decodedText);
             }
         }

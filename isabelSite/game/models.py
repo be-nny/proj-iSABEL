@@ -79,5 +79,19 @@ class MyUser(AbstractUser):
     def __str__(self):
         return self.username
 
-# Author: Merve Ipek Bal
 
+class Receipt(models.Model):
+    receipt_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    product_name = models.CharField(default="0", max_length=200)
+    product_barcode = models.CharField(default="0", max_length=20)
+
+    def get_product_name(self):
+        return self.product_name
+
+    def get_product_barcode(self):
+        return self.product_barcode
+
+    def __str__(self):
+        return self.receipt_id
+# Author: Merve Ipek Bal

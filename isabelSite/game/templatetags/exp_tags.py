@@ -23,8 +23,10 @@ def updateUserFromBCode(user, code):
 
 
 def updateUserExp(user, code):
-    (exists, attributes) = getAttributes(code)
-    points_to_add = calculatePointsToAdd(exists, attributes)
+    (name, attributes) = getAttributes(code)
+    new_receipt = Receipt(username = user.username, product_name = name, product_barcode = code)
+    new_receipt.save()
+    points_to_add = calculatePointsToAdd(name, attributes)
     if 'weight' in attributes:
         user.weight_recycled += float(attributes['weight']) / float(1000)
     user.user_xp += points_to_add

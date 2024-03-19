@@ -29,7 +29,17 @@
     </form>
 </div>
 
-
+    <div class="receipt-container">
+        <h2 class="subtitle">Receipt</h2>
+        {% for product in products %}
+        <li>
+            <h1>HELLO</h1>
+            <h2>{{ product }}</h2>
+{#            <p>Barcode: ${{ product}}</p>#}
+        </li>
+        {% endfor %}
+        <div id="receipt"></div>
+    </div>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script src="{% static 'scripts/camera.js' %}"></script>
     <script src="{% static 'scripts/report.js' %}"></script>
