@@ -119,14 +119,6 @@ def leaderboard(request):
 
 
 """
-View for the user receipt, used to show what the user has scanned
-"""
-
-# def receipt(request):
-#     products = Receipt.product_name.all()
-#     return render(request, 'scan.html', {'products': products})
-
-"""
 View for the users profile page, if a user isn't logged in, they are redirected
 """
 
@@ -153,19 +145,10 @@ def about(request):
 def update_user_from_bcode(request):
     decoded_text = request.GET.get('code', '0')
     updateUserFromBCode(request.user, decoded_text)
-
-    # Assuming you're sending decodedText as a query parameter
-    # Perform actions to update user based on decoded_text
-    # Example:
-    # user.update(decoded_text)
     return JsonResponse({'success': True})
 
 def checkout(request):
     checkoutUser(request.user)
-    # Assuming you're sending decodedText as a query parameter
-    # Perform actions to update user based on decoded_text
-    # Example:
-    # user.update(decoded_text)
     return JsonResponse({'success': True})
 
 

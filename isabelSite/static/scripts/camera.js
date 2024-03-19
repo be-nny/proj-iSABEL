@@ -1,17 +1,10 @@
 const html5QrCode = new Html5Qrcode("reader");
-// to store the previously scanned QR code
 let prev_code = "";
-
-// Callback function called when QR code is successfully decoded
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
-    // Extracting the format of the QR code
     let code_Result = decodedResult.result.format.formatName
-     // Checking if the QR code format is not 'QR_CODE'
     if (code_Result !== 'QR_CODE'){
-        // Ensure the same code is not scanned again
         if(prev_code !== decodedText) {
             prev_code = decodedText
-            // Update user information based on the decoded text
             if (decodedText === "") {
                 updateUserFromBCode("0");
             } else {
@@ -19,12 +12,14 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             }
         }
     } else{
-        // Ensure the same code is not scanned again
-        if(prev_code !== decodedText) {
-            prev_code = decodedText
-            checkout();
+        if(decodedText.includes("Lib Basement") || decodedText.includes("DH1") || decodedText.includes("DH2")){
+            if(prev_code !== decodedText) {
+                prev_code = decodedText
+                console.log(decodedText)
+                checkout();
+            }
+            console.log(decodedText);
         }
-        console.log(decodedText);
     }
 };
 
@@ -43,6 +38,7 @@ function updateUserFromBCode(decodedText) {
     })
     .then(data => {
         console.log('Update successful:', data);
+        window.location.reload();
         // Handle success if needed
     })
     .catch(error => {
@@ -62,6 +58,7 @@ function checkout() {
     })
     .then(data => {
         console.log('Checkout successful:', data);
+        // window.location.reload();
         // Handle success if needed
     })
     .catch(error => {
