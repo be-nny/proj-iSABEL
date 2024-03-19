@@ -13,7 +13,6 @@ import re
 import copy
 import math
 
-
 register = template.Library()
 
 
@@ -22,11 +21,12 @@ def updateUserFromBCode(user, code):
     # code = request.GET.get("code", "0")
     return updateUserExp(user, code)
 
+
 def updateUserExp(user, code):
     (name, attributes) = getAttributes(code)
-    name = str(name).replace("<h4>","")
-    name = str(name).replace("</h4>","")
-    new_receipt = Receipt(username = str(user.username), product_name = str(name), product_barcode = str(code))
+    name = str(name).replace("<h4>", "")
+    name = str(name).replace("</h4>", "")
+    new_receipt = Receipt(username=str(user.username), product_name=str(name), product_barcode=str(code))
     new_receipt.save()
     points_to_add = calculatePointsToAdd(name, attributes)
     if 'weight' in attributes:
@@ -35,13 +35,14 @@ def updateUserExp(user, code):
     user.save()
     return points_to_add
 
+
 @register.simple_tag
 def checkoutUser(user):
     user.user_xp += user.temporary_xp
     user.temporary_xp = 0
     user.save()
 
-    receipts = Receipt.objects.filter(username = str(user.username))
+    receipts = Receipt.objects.filter(username=str(user.username))
     receipts.delete()
 
 
@@ -101,9 +102,11 @@ def getAttributes(code):
         dr.get(url)
         try:
             # Switch to the CAPTCHA iframe
-            WebDriverWait(dr, 20).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@title='Widget containing a Cloudflare security challenge']")))
+            WebDriverWait(dr, 20).until(EC.frame_to_be_available_and_switch_to_it(
+                (By.XPATH, "//iframe[@title='Widget containing a Cloudflare security challenge']")))
             # Click the "I'm not a robot" checkbox
-            WebDriverWait(dr, 20).until(EC.element_to_be_clickable((By.XPATH, "//label[@class='ctp-checkbox-label']"))).click()
+            WebDriverWait(dr, 20).until(
+                EC.element_to_be_clickable((By.XPATH, "//label[@class='ctp-checkbox-label']"))).click()
             # Wait for the CAPTCHA challenge to be resolved (adjust timeout as needed)
             WebDriverWait(dr, 10).until(EC.invisibility_of_element_located((By.XPATH, "//div[@class='g-recaptcha']")))
             time.sleep(5)

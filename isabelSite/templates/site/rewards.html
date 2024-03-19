@@ -2,40 +2,35 @@
 {% load static %}
 {% block content %}
     <div class="card qr-card" style="border-radius: 40px;" data-aos="flip-left">
-      <img id="qr-code-img" class="card-img-top blurred-image" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
-      <div class="card-body">
-        <h5 class="card-title">McDonalds</h5>
-        <p class="card-text">Your discount for your next McDonalds order!</p>
-        <a href="#" class="btn btn-primary" onclick="toggleBlur(0, 10000)">Purchase</a>
-      </div>
-</div>
-
+        <img id="qr-code-img" class="card-img-top blurred-image" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
+        <div class="card-body">
+            <h5 class="card-title">McDonalds</h5>
+            <p class="card-text">Your discount for your next McDonalds order!</p>
+            <a href="#" class="btn btn-primary" onclick="toggleBlur(0, 10000)">Purchase</a>
+        </div>
+    </div>
 
     <div class="card qr-card" style="border-radius: 40px;" data-aos="flip-left">
-      <img id="qr-code-img1" class="card-img-top blurred-image" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
-      <div class="card-body">
-        <h5 class="card-title">Forum Shop</h5>
-        <p class="card-text">Your discount for your next shop!</p>
-        <a href="#" class="btn btn-primary" onclick="toggleBlur(1, 10000)">Purchase</a>
-      </div>
-</div>
+        <img id="qr-code-img1" class="card-img-top blurred-image" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
+        <div class="card-body">
+            <h5 class="card-title">Forum Shop</h5>
+            <p class="card-text">Your discount for your next shop!</p>
+            <a href="#" class="btn btn-primary" onclick="toggleBlur(1, 10000)">Purchase</a>
+        </div>
+    </div>
 
- <div class="card qr-card" style="border-radius: 40px;" data-aos="flip-left">
-      <img id="qr-code-img2" class="card-img-top blurred-image" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
-      <div class="card-body">
-        <h5 class="card-title">Ram Bar</h5>
-        <p class="card-text">Your discount for your next drink!</p>
-        <a href="#" class="btn btn-primary" onclick="toggleBlur(2, 10000)">Purchase</a>
-      </div>
-</div>
-
-
+    <div class="card qr-card" style="border-radius: 40px;" data-aos="flip-left">
+        <img id="qr-code-img2" class="card-img-top blurred-image" src="{% static 'assets/random-qr-code.png' %}" alt="Card image cap" style="max-width: 100%; Padding: 20px; border-radius: 40px;">
+        <div class="card-body">
+            <h5 class="card-title">Ram Bar</h5>
+            <p class="card-text">Your discount for your next drink!</p>
+            <a href="#" class="btn btn-primary" onclick="toggleBlur(2, 10000)">Purchase</a>
+        </div>
+    </div>
 
 <!-- Add Bootstrap CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <!-- Add Custom CSS -->
-
-
 <!-- Add Bootstrap JS for button functionality -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -65,10 +60,6 @@
         });
     }
 </script>
-
 <div id="blank-space">
-
 </div>
-
-
 {% endblock %}

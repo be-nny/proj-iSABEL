@@ -14,22 +14,23 @@
             <div id="reader" data-aos-duration="1500"></div>
         </div>
     </div>
-<div class="button-container">
-    <button type="button" id="reportButton" class="btn btn-danger btn-rounded btn-icon">
-        <i class="bi bi-flag"></i>
-    </button>
-</div>
 
-<div id="reportFormDiv" class="hide">
-    <form id="reportForm" action="/game/scan">
-        {% csrf_token %}
-        <label for="reportInputField" id="reportLabel">Report:</label><br>
-        <input type="text" id="reportInputField" name="reportInputField"><br><br>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+    <div class="button-container">
+        <button type="button" id="reportButton" class="btn btn-danger btn-rounded btn-icon">
+            <i class="bi bi-flag"></i>
+        </button>
+    </div>
 
-    <div class="receipt-container">
+    <div id="reportFormDiv" class="hide">
+        <form id="reportForm" action="/game/scan">
+            {% csrf_token %}
+            <label for="reportInputField" id="reportLabel">Report:</label><br>
+            <input type="text" id="reportInputField" name="reportInputField"><br><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="card receipt-container" data-aos="flip-left" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
         <h2 class="subtitle">Receipt</h2>
         {% for product in products %}
         <li>
