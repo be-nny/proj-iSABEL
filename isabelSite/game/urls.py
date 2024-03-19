@@ -15,6 +15,7 @@ urlpatterns = [
     path("reports", views.reports, name="reports"),
     path("users", views.users, name="users"),
     path("update_user_from_bcode", views.update_user_from_bcode, name="update_user_from_bcode"),
+    path("checkout", views.checkout, name="checkout"),
     path("buy_voucher", views.buy_voucher, name="buy_voucher"),
     path("save-report", views.save_report, name='save_report'),
 

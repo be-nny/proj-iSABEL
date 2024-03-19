@@ -8,11 +8,14 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             if (decodedText === "") {
                 updateUserFromBCode("0");
             } else {
-                console.log(decodedText);
                 updateUserFromBCode(decodedText);
             }
         }
     } else{
+        if(prev_code !== decodedText) {
+            prev_code = decodedText
+            checkout();
+        }
         console.log(decodedText);
     }
 };
@@ -36,6 +39,25 @@ function updateUserFromBCode(decodedText) {
     })
     .catch(error => {
         console.error('Error updating user:', error);
+        // Handle error if needed
+    });
+}
+
+function checkout() {
+    // Send AJAX request to Django view
+    fetch(`checkout`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Checkout successful:', data);
+        // Handle success if needed
+    })
+    .catch(error => {
+        console.error('Error Checking out user:', error);
         // Handle error if needed
     });
 }

@@ -72,13 +72,19 @@ video {
 }
 
 .receipt-container {
-    margin-top: 90%;
+    margin-top: 5%;
     padding: 5px;
     position: relative;
     overflow: scroll;
     z-index: 1;
     border-radius: 30px;
     background-color: #292a2e;
+}
+
+.receipt-text{
+    color: white;
+    font-family: 'Montserrat', sans-serif;!important;
+    font-size: 30px;
 }
 
 @keyframes rotate {

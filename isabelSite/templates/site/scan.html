@@ -33,9 +33,8 @@
         <h2 class="subtitle">Receipt</h2>
         {% for product in products %}
         <li>
-            <h1>HELLO</h1>
-            <h2>{{ product }}</h2>
-{#            <p>Barcode: ${{ product}}</p>#}
+            <h2 class = "receipt-text">{{ product.product_name }}</h2>
+            <p>Barcode: {{ product.product_barcode }}</p>
         </li>
         {% endfor %}
         <div id="receipt"></div>

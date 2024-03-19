@@ -8,10 +8,11 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-
+from ..models import Receipt
 import re
 import copy
 import math
+
 
 register = template.Library()
 
@@ -21,17 +22,27 @@ def updateUserFromBCode(user, code):
     # code = request.GET.get("code", "0")
     return updateUserExp(user, code)
 
-
 def updateUserExp(user, code):
     (name, attributes) = getAttributes(code)
-    new_receipt = Receipt(username = user.username, product_name = name, product_barcode = code)
+    name = str(name).replace("<h4>","")
+    name = str(name).replace("</h4>","")
+    new_receipt = Receipt(username = str(user.username), product_name = str(name), product_barcode = str(code))
     new_receipt.save()
     points_to_add = calculatePointsToAdd(name, attributes)
     if 'weight' in attributes:
         user.weight_recycled += float(attributes['weight']) / float(1000)
-    user.user_xp += points_to_add
+    user.temporary_xp += points_to_add
     user.save()
     return points_to_add
+
+@register.simple_tag
+def checkoutUser(user):
+    user.user_xp += user.temporary_xp
+    user.temporary_xp = 0
+    user.save()
+
+    receipts = Receipt.objects.filter(username = str(user.username))
+    receipts.delete()
 
 
 def calculatePointsToAdd(exists, attributes):

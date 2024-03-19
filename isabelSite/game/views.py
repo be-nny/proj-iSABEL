@@ -10,7 +10,7 @@ from .models import MyUser, Report
 from django.http import HttpResponse
 from django.template import loader
 
-from .templatetags.exp_tags import updateUserFromBCode, spendXP
+from .templatetags.exp_tags import updateUserFromBCode, spendXP, checkoutUser
 
 """
 Initialises the login and sign up flow
@@ -50,7 +50,12 @@ def scan(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, "site/scan.html", {})
+        mydata = Receipt.objects.all()
+        template = loader.get_template('site/scan.html')
+        context = {
+            'products': mydata,
+        }
+        return HttpResponse(template.render(context, request))
 
 
 """
@@ -117,9 +122,9 @@ def leaderboard(request):
 View for the user receipt, used to show what the user has scanned
 """
 
-def receipt(request):
-    products = Receipt.product_name.all()
-    return render(request, 'scan.html', {'products': products})
+# def receipt(request):
+#     products = Receipt.product_name.all()
+#     return render(request, 'scan.html', {'products': products})
 
 """
 View for the users profile page, if a user isn't logged in, they are redirected
@@ -149,6 +154,14 @@ def update_user_from_bcode(request):
     decoded_text = request.GET.get('code', '0')
     updateUserFromBCode(request.user, decoded_text)
 
+    # Assuming you're sending decodedText as a query parameter
+    # Perform actions to update user based on decoded_text
+    # Example:
+    # user.update(decoded_text)
+    return JsonResponse({'success': True})
+
+def checkout(request):
+    checkoutUser(request.user)
     # Assuming you're sending decodedText as a query parameter
     # Perform actions to update user based on decoded_text
     # Example:
