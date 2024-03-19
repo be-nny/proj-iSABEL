@@ -25,6 +25,7 @@ class MyUser(AbstractUser):
     user_xp = models.IntegerField(default=0)
     weight_recycled = models.FloatField(default=0)
     streak = models.IntegerField(default=0)
+    temporary_xp = models.IntegerField(default=0)
 
     # change the directory later
     profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
@@ -79,5 +80,19 @@ class MyUser(AbstractUser):
     def __str__(self):
         return self.username
 
-# Author: Merve Ipek Bal
 
+class Receipt(models.Model):
+    receipt_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = models.CharField(default="0", max_length=200)
+    product_name = models.CharField(default="0", max_length=200)
+    product_barcode = models.CharField(default="0", max_length=20)
+
+    def get_product_name(self):
+        return self.product_name
+
+    def get_product_barcode(self):
+        return self.product_barcode
+
+    def __str__(self):
+        return self.receipt_id
+# Author: Merve Ipek Bal

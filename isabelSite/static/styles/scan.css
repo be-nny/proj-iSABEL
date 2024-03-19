@@ -15,6 +15,11 @@ video {
     inset: -5px !important;
 }
 
+
+#receipt {
+    padding: 10px;
+}
+
 .scan-box{
     margin-top: 10%;
 }
@@ -66,10 +71,27 @@ video {
     border-radius: 30px;
 }
 
+.receipt-container {
+    margin-top: 5%;
+    padding: 5px;
+    position: relative;
+    overflow: scroll;
+    z-index: 1;
+    border-radius: 30px;
+    background-color: #292a2e;
+}
+
+.receipt-text{
+    color: white;
+    font-family: 'Montserrat', sans-serif;!important;
+    font-size: 30px;
+}
+
 @keyframes rotate {
 	100% {
 		transform: translate(-50%, -50%) rotate(1turn);
 	}
+
 }
 
 .btn.btn-rounded {

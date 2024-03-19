@@ -2,16 +2,20 @@ const html5QrCode = new Html5Qrcode("reader");
 let prev_code = "";
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
     let code_Result = decodedResult.result.format.formatName
-    if (code_Result != 'QR_CODE'){
-        if(prev_code != decodedText) {
+    if (code_Result !== 'QR_CODE'){
+        if(prev_code !== decodedText) {
             prev_code = decodedText
-            if (decodedText == "") {
+            if (decodedText === "") {
                 updateUserFromBCode("0");
             } else {
                 updateUserFromBCode(decodedText);
             }
         }
     } else{
+        if(prev_code !== decodedText) {
+            prev_code = decodedText
+            checkout();
+        }
         console.log(decodedText);
     }
 };
@@ -35,6 +39,25 @@ function updateUserFromBCode(decodedText) {
     })
     .catch(error => {
         console.error('Error updating user:', error);
+        // Handle error if needed
+    });
+}
+
+function checkout() {
+    // Send AJAX request to Django view
+    fetch(`checkout`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Checkout successful:', data);
+        // Handle success if needed
+    })
+    .catch(error => {
+        console.error('Error Checking out user:', error);
         // Handle error if needed
     });
 }
