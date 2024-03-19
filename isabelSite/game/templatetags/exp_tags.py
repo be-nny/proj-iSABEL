@@ -50,6 +50,25 @@ def getAttributes(code):
     meats = []
 
     chrome_options = webdriver.ChromeOptions()
+
+    proxy_list = [
+        '138.68.60.8:3128',
+        '54.66.104.168:80',
+        '80.48.119.28:8080',
+        '157.100.26.69:80',
+        '198.59.191.234:8080',
+        '198.49.68.80:80',
+        '169.57.1.85:8123',
+        '219.78.228.211:80',
+        '88.215.9.208:80',
+        '130.41.55.190:8080',
+        '88.210.37.28:80',
+        '128.199.202.122:8080',
+        '2.179.154.157:808',
+        '165.154.226.12:80',
+        '200.103.102.18:80'
+    ]
+
     user_agents = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36",
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36",
@@ -74,10 +93,13 @@ def getAttributes(code):
     ]
 
     chrome_options.add_argument(f'user-agent={random.choice(user_agents)}')
+    # chrome_options.add_argument("--proxy-server=%s" % {random.choice(proxy_list)})
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option("useAutomationExtension", False)
     chrome_options.add_argument('--headless=new')
     chrome_options.add_argument('--no-sandbox')  # Required when running as root
     dr = webdriver.Chrome(options=chrome_options)
-
     try:
         dr.get(url)
         time.sleep(5)
