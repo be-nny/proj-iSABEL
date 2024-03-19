@@ -1,3 +1,4 @@
+// function to redirect the pages
 function linkClicked(name) {
     switch (name){
         case "leaderboard":
@@ -32,10 +33,12 @@ function linkClicked(name) {
     }
 }
 
+// Function to simulate sleep/wait using a promise
 function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+// Function to check the active tab based on the current URL path
 function checkTabs(){
     var path = document.location.pathname;
     path = path.replace("/", "");

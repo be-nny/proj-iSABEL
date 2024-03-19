@@ -1,10 +1,17 @@
 const html5QrCode = new Html5Qrcode("reader");
+// to store the previously scanned QR code
 let prev_code = "";
+
+// Callback function called when QR code is successfully decoded
 const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+    // Extracting the format of the QR code
     let code_Result = decodedResult.result.format.formatName
+     // Checking if the QR code format is not 'QR_CODE'
     if (code_Result !== 'QR_CODE'){
+        // Ensure the same code is not scanned again
         if(prev_code !== decodedText) {
             prev_code = decodedText
+            // Update user information based on the decoded text
             if (decodedText === "") {
                 updateUserFromBCode("0");
             } else {
@@ -12,6 +19,7 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             }
         }
     } else{
+        // Ensure the same code is not scanned again
         if(prev_code !== decodedText) {
             prev_code = decodedText
             checkout();

@@ -199,11 +199,3 @@ def reports(request):
     else:
         return render(request, 'gamekeeper/reports.html', {})
 
-@require_POST
-def save_report(request):
-    message = request.POST.get('reportInputField')
-    if message != "":
-        new_report = Report.objects.create(message=message)
-        return JsonResponse({'success': True})
-    else:
-        return JsonResponse({'success': False, 'error': 'Message is required'})

@@ -1,3 +1,4 @@
+# Author: Merve Ipek Bal, Ben Abbot, Ellis
 import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
@@ -95,4 +96,3 @@ class Receipt(models.Model):
 
     def __str__(self):
         return self.receipt_id
-# Author: Merve Ipek Bal
