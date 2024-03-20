@@ -1,7 +1,6 @@
 {# Alicia Henderson 16/3/24 #}
 <!DOCTYPE html>
 <html lang="en">
-<head>
 {% load static %}
 <html>
     <head>
@@ -22,45 +21,29 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <script>
+            AOS.init();
+        </script>
+        <div>
+{#            <img class="banner-img" style="position: absolute; top: 5px; right: 5px; height: 10%; width: auto; text-align: right; !important;" src="{% static 'assets/iSABEL-logo-(dark).png' %}">#}
+            <nav role="navigation">
+                <div id="menuToggle">
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                  <a href="reports"><li>Reports</li></a>
+                  <a href="users"><li>Users</li></a>
+                  <a href="logout"><li>Logout</li></a>
+                </ul>
+                </div>
+            </nav>
+            {% block content %}
 
-</head>
-<body>
-    <script>
-        AOS.init();
-    </script>
-    <div>
-        <img class="banner-img" style="position: absolute;
-    left: 5px;
-    top: 5px;
-    height: 10%;
-    width: 15%;"src="{% static 'assets/iSABEL-logo-(dark).png' %}">
-        {% block content %}
-        {% endblock %}
-    </div>
-<!--hamburger menu-->
-<section class="mb-3">
-  <nav class="navbar">
-    <div class="container-fluid">
-      <button class="navbar-toggler second-button" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarToggleExternalContent10"
-        aria-controls="navbarToggleExternalContent10" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
-      </button>
-    </div>
-  </nav>
-  <div class="collapse" id="navbarToggleExternalContent10">
-    <div class="bg-light shadow-3 p-4">
-      <button class="btn btn-link btn-block border-bottom m-0">Link 1</button>
-      <button class="btn btn-link btn-block border-bottom m-0">Link 2</button>
-      <button class="btn btn-link btn-block m-0">Link 3</button>
-    </div>
-  </div>
-</section>
-<script>
-    document.querySelector('.second-button').addEventListener('click', function () {
-    document.querySelector('.animated-icon2').classList.toggle('open');
-    });
-</script>
-</body>
+            {% endblock %}
+        </div>
+    </body>
 </html>
