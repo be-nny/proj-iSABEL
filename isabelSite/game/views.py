@@ -1,9 +1,8 @@
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.urls import reverse_lazy
-from django.views.decorators.http import require_POST
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
 from .models import MyUser, Report, Receipt
@@ -11,7 +10,6 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .templatetags.exp_tags import updateUserFromBCode, spendXP, checkoutUser
-from .templatetags.report_tags import resolve
 
 """
 Initialises the login and sign up flow
@@ -191,6 +189,9 @@ def reports(request):
         }
         return HttpResponse(template.render(context, request))
 
+"""
+View for the reports page where the gamekeeper can resolve reports
+"""
 def resolve(request):
     report = request.GET.get('report_id','')
     Report.objects.get(report_id=report).delete()
