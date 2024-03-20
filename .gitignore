@@ -1,2 +1,3 @@
 .idea/*
 isabelSite/db.sqlite3
+isabelSite/game/migrations/*

@@ -1,9 +1,8 @@
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.urls import reverse_lazy
-from django.views.decorators.http import require_POST
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
 from .models import MyUser, Report, Receipt
@@ -11,7 +10,6 @@ from django.http import HttpResponse
 from django.template import loader
 
 from .templatetags.exp_tags import updateUserFromBCode, spendXP, checkoutUser
-from .templatetags.report_tags import resolve
 
 """
 Initialises the login and sign up flow
@@ -164,17 +162,22 @@ def buy_voucher(request):
 """
 View for the gamekeeper page where they can view all users and their rank, if a user isn't logged in, they are redirected
 """
-
+@permission_required("game.game_keeper")
 def users(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, 'gamekeeper/users.html', {})
+        mydata = MyUser.objects.all().order_by('user_xp').values()
+        template = loader.get_template('gamekeeper/users.html')
+        context = {
+            'myusers': mydata,
+        }
+        return HttpResponse(template.render(context, request))
 
 """
 View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
 """
-
+@permission_required("game.game_keeper")
 def reports(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -186,4 +189,11 @@ def reports(request):
         }
         return HttpResponse(template.render(context, request))
 
+"""
+View for the reports page where the gamekeeper can resolve reports
+"""
+def resolve(request):
+    report = request.GET.get('report_id','')
+    Report.objects.get(report_id=report).delete()
 
+    return reports(request)

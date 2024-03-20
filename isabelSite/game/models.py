@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
 class Report(models.Model):
     report_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     reported_at = models.DateTimeField(auto_now_add=True)
@@ -10,6 +11,7 @@ class Report(models.Model):
 
     def __str__(self):
         return self.message
+
 
 # Define a custom user model inheriting from AbstractUser
 class MyUser(AbstractUser):
@@ -21,7 +23,6 @@ class MyUser(AbstractUser):
     REQUIRED_FIELDS = []
 
     # Custom fields for the user model
-    first_name = models.CharField(max_length=20, null=False, blank=False)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user_xp = models.IntegerField(default=0)
     weight_recycled = models.FloatField(default=0)
@@ -29,7 +30,6 @@ class MyUser(AbstractUser):
     temporary_xp = models.IntegerField(default=0)
 
     # change the directory later
-    profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     leaderboard_position = models.IntegerField(default=-1)
     longest_streak = models.IntegerField(default=0)
     golden_bins_collected = models.IntegerField(default=0)
@@ -78,6 +78,7 @@ class MyUser(AbstractUser):
     # Define the string representation of the user
     def __str__(self):
         return self.username
+
 
 class Receipt(models.Model):
     receipt_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

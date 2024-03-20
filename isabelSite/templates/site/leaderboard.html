@@ -13,10 +13,12 @@
                 <th>Score</th>
             </tr>
             {% for x in myusers %}
+                {% if x.username != "GameKeeper" %}
             <tr>
                 <td style="color: white;">{{ x.username }}</td>
                 <td style="color: white;" class="counter-count">{{ x.user_xp }}</td>
             </tr>
+                {% endif %}
             {% endfor %}
         </table>
     </div>
