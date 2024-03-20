@@ -17,6 +17,9 @@ urlpatterns = [
     path("update_user_from_bcode", views.update_user_from_bcode, name="update_user_from_bcode"),
     path("checkout", views.checkout, name="checkout"),
     path("buy_voucher", views.buy_voucher, name="buy_voucher"),
+    path("reset_password", views.resetPassword, name="reset_password"),
+    path("reset_password_code", views.resetPasswordCode, name="reset_password_code"),
+    path("exp_demo", views.expDemo, name="exp_demo")
 
 
 ]
