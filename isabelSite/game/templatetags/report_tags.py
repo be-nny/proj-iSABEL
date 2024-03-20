@@ -10,8 +10,10 @@ def report(msg):
     Report.objects.create(message=msg)
 
 # Function to resolve a report by deleting it from the database
+@register.simple_tag
 def resolve(report):
-    Report.objects.filter(report_id=report.report_id).delete()
+    id = report.report_id
+    Report.objects.get(report_id=id).delete()
 
 # Decorator to register the function as a simple template tag
 @register.simple_tag

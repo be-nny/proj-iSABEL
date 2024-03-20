@@ -6,12 +6,12 @@ from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
-from .models import MyUser, Receipt
-from .models import MyUser, Report
+from .models import MyUser, Report, Receipt
 from django.http import HttpResponse
 from django.template import loader
 
 from .templatetags.exp_tags import updateUserFromBCode, spendXP, checkoutUser
+from .templatetags.report_tags import resolve
 
 """
 Initialises the login and sign up flow
@@ -172,18 +172,19 @@ def users(request):
     else:
         return render(request, 'gamekeeper/users.html', {})
 
-    """
-    View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
-    """
-
+"""
+View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
+"""
 
 def reports(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        mydata = Report.objects.all().order_by('-reported_at').values()
+        mydata = Report.objects.all()
         template = loader.get_template('gamekeeper/reports.html')
         context = {
             'reports': mydata,
         }
         return HttpResponse(template.render(context, request))
+
+

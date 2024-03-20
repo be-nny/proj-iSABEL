@@ -13,3 +13,13 @@ class MyAdmin(UserAdmin):
 
 # Registering the MyUser model with the custom admin class
 admin.site.register(MyUser, MyAdmin)
+
+def create_game_keeper():
+    try:
+        user = MyUser.objects.get_by_natural_key(username="GameKeeper")
+        user.is_game_keeper = True
+        user.save()
+    except:
+        print("No 'GameKeeper' account found")
+
+create_game_keeper()
