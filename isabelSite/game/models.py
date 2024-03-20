@@ -1,7 +1,7 @@
 # Author: Merve Ipek Bal, Ben Abbot, Ellis
 import uuid
 from django.db import models
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import AbstractUser
 
 class Report(models.Model):
     report_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -33,8 +33,6 @@ class MyUser(AbstractUser):
     leaderboard_position = models.IntegerField(default=-1)
     longest_streak = models.IntegerField(default=0)
     golden_bins_collected = models.IntegerField(default=0)
-    is_game_keeper = models.BooleanField(default=False)
-    # is_superuser = models.BooleanField(default=False)
 
     # Define methods to retrieve user information
     def get_username(self):
@@ -80,7 +78,6 @@ class MyUser(AbstractUser):
     # Define the string representation of the user
     def __str__(self):
         return self.username
-
 
 class Receipt(models.Model):
     receipt_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
