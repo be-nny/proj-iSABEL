@@ -186,4 +186,8 @@ def reports(request):
         }
         return HttpResponse(template.render(context, request))
 
+def resolve(request):
+    report = request.GET.get('report_id','')
+    Report.objects.get(report_id=report).delete()
 
+    return reports(request)
