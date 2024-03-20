@@ -48,11 +48,11 @@ div.desc {
   clear: both;
 }
 
-.btn-primary-resolve{
+.btn-primary{
     background: linear-gradient(45deg, #05abe0 0%, #74CB92 100%);
 }
 
-.resolve-btn {
+.btn {
     text-align: center;
     align-items: center;
     margin-top: 20px;
@@ -70,7 +70,4 @@ div.desc {
   grid-gap: 10px;
   background-color: #CBE4DE;
   padding: 10px;
-}
-
-.user-report{
 }

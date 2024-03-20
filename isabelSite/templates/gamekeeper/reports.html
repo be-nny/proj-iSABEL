@@ -3,20 +3,19 @@
 {% load static %}
 {% block content %}
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <div style="padding-top:100px;"></div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-    <div id="user-reports" class="grid-container">
+    <div style="padding-top:100px;"></div>
+    <div class="grid-container">
         {% for report in reports %}
-            <div class="user-report">
-                <div class="responsive" data-aos="flip-left">
-                    <div class="gallery" style="text-align: center">
-                        <i class="bi bi-exclamation-diamond" style="font-size: 10em; text-align: center"></i>
-                        <div style="padding: 5px;" class="desc">Time: {{ report.reported_at }} </div>
-                        <div class="desc" style="padding: 5px;">Message: {{ report.message }}</div>
-                        <div class = "desc" style="padding: 5px;">
-                            <a href="#" class="resolve-btn resolve-btn-resolve" onclick="toggleBlur(0, 10000)">Resolve</a>
-                        </div>
-                    </div>
+            <div class="card" style="width: 20rem;">
+                <i class="bi bi-exclamation-diamond" style="font-size: 10em; text-align: center"></i>
+                <div class="card-body">
+                    <h5 class="card-title medium">Report</h5>
+                    <h5 class="card-subtitle mb-2 text-bold small"> {{ report.reported_at }}</h5>
+                    <h5 class="card-subtitle mb-4 text-muted tiny"> {{ report.report_id }}</h5>
+                    <p class="card-text">{{ report.message }}</p>
+                    <a href="#" class="btn btn-primary">Resolve</a>
                 </div>
             </div>
         {% endfor %}
