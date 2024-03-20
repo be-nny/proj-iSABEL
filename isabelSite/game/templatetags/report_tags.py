@@ -18,6 +18,7 @@ def resolve(report):
 def save_report(request):
     message = request.GET.get('reportInputField', '')
     if message != '':
-        report("Test2")
+        report(message)
+
 
 
