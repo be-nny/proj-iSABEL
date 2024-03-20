@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+
 class Report(models.Model):
     report_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     reported_at = models.DateTimeField(auto_now_add=True)
@@ -10,6 +11,7 @@ class Report(models.Model):
 
     def __str__(self):
         return self.message
+
 
 # Define a custom user model inheriting from AbstractUser
 class MyUser(AbstractUser):
@@ -78,6 +80,7 @@ class MyUser(AbstractUser):
     # Define the string representation of the user
     def __str__(self):
         return self.username
+
 
 class Receipt(models.Model):
     receipt_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
