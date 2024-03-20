@@ -169,7 +169,12 @@ def users(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, 'gamekeeper/users.html', {})
+        mydata = MyUser.objects.all().order_by('user_xp').values()
+        template = loader.get_template('gamekeeper/users.html')
+        context = {
+            'myusers': mydata,
+        }
+        return HttpResponse(template.render(context, request))
 
 """
 View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
