@@ -5,9 +5,18 @@
 {% load users_tags %}
 {% block title %}Users{% endblock %}
 {% block content %}
-    {% remove player %}
+    {% remove request %}
 <div class="table-container">
     <div style="padding-top: 100px">
+        <p>start of form</p>
+        <div id="userDeleteDiv">
+            <form id="userDeleteForm" action="/game/users">
+                <label for="userInputField" id="username">Username to Delete:</label><br>
+                <input type="text" id="userInputField" name="userInputField"><br><br>
+                <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+        </div>
+    <p>end of form</p>
         <table class = "table table-bordered table-striped" id="userTable">
             <thead class="thead-dark">
             <tr>
@@ -19,7 +28,7 @@
             <tr>
                 <td style="color: white;">{{ x.username }}</td>
                 <td style="color: white;" class="counter-count">{{ x.user_xp }}</td>
-                <td style="color: black;"><button type="submit" class="btn btn-primary">Delete</button>
+                <td style="color: black;"><button class="btn btn-primary">Delete</button>
                 </td>
             </tr>
             {% endfor %}

@@ -79,6 +79,7 @@ TEMPLATES = [
             'builtins': [
                 'game.templatetags.exp_tags',
                 'game.templatetags.report_tags',
+                'game.templatetags.users_tags',
             ]
         },
     },

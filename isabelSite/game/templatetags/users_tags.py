@@ -8,11 +8,13 @@ register = template.Library()
 
 # Function for gamekeepers to delete users
 @register.simple_tag
-def remove(player):
-    try:
-        MyUser.objects.get_by_natural_key(player).delete()
-    except:
-        print("User not found")
+def remove(request):
+    username = request.GET.get("userInputField", "")
+    if username != "":
+        try:
+            MyUser.objects.get_by_natural_key(username=username).delete()
+        except:
+            print("User not found")
 
 
 
