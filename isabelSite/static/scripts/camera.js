@@ -12,11 +12,14 @@ const qrCodeSuccessCallback = (decodedText, decodedResult) => {
             }
         }
     } else{
-        if(prev_code !== decodedText) {
-            prev_code = decodedText
-            checkout();
+        if(decodedText.includes("Lib Basement") || decodedText.includes("DH1") || decodedText.includes("DH2")){
+            if(prev_code !== decodedText) {
+                prev_code = decodedText
+                console.log(decodedText)
+                checkout();
+            }
+            console.log(decodedText);
         }
-        console.log(decodedText);
     }
 };
 
@@ -35,6 +38,7 @@ function updateUserFromBCode(decodedText) {
     })
     .then(data => {
         console.log('Update successful:', data);
+        window.location.reload();
         // Handle success if needed
     })
     .catch(error => {
@@ -54,6 +58,7 @@ function checkout() {
     })
     .then(data => {
         console.log('Checkout successful:', data);
+        // window.location.reload();
         // Handle success if needed
     })
     .catch(error => {
