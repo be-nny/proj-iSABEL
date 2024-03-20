@@ -1,8 +1,11 @@
 {# Alicia Henderson 16/3/24 #}
+
 {% extends "gamekeeper/base.html" %}
 {% load static %}
+{% load users_tags %}
 {% block title %}Users{% endblock %}
 {% block content %}
+    {% remove player %}
 <div class="table-container">
     <div style="padding-top: 100px">
         <table class = "table table-bordered table-striped" id="userTable">
@@ -16,7 +19,7 @@
             <tr>
                 <td style="color: white;">{{ x.username }}</td>
                 <td style="color: white;" class="counter-count">{{ x.user_xp }}</td>
-                <td style="color: black;"><button onclick="deletePlayer('{{ x.id }}')">Delete</button>
+                <td style="color: black;"><button type="submit" class="btn btn-primary">Delete</button>
                 </td>
             </tr>
             {% endfor %}
@@ -34,8 +37,8 @@
             rows = table.rows;
             for (i = 1; i < (rows.length - 1); i++) {
                 shouldSwitch = false;
-                x = rows[i].getElementsByTagName("td")[1]; // Change index to sort based on different columns
-                y = rows[i + 1].getElementsByTagName("td")[1]; // Change index to sort based on different columns
+                x = rows[i].getElementsByTagName("td")[1];
+                y = rows[i + 1].getElementsByTagName("td")[1];
                 if (Number(x.textContent) < Number(y.textContent)) {
                     shouldSwitch = true;
                     break;
@@ -47,8 +50,6 @@
             }
         }
     }
-    function deletePlayer(playerId) {
-        try{}
     window.onload = function () {
         sortTable();
     };
