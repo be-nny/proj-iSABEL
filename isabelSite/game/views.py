@@ -181,5 +181,9 @@ def reports(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
     else:
-        return render(request, 'gamekeeper/reports.html', {})
-
+        mydata = Report.objects.all()
+        template = loader.get_template('gamekeeper/reports.html')
+        context = {
+            'reports': mydata,
+        }
+        return HttpResponse(template.render(context, request))
