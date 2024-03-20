@@ -165,7 +165,6 @@ def buy_voucher(request):
 View for the gamekeeper page where they can view all users and their rank, if a user isn't logged in, they are redirected
 """
 
-
 def users(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
