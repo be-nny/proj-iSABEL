@@ -110,3 +110,10 @@ left: 50%;
     right: 10px;
     top: 20px;
 }
+
+
+.h1{
+    text-align: center;
+    color: #2C3333;
+    font-size: 50px;
+}
