@@ -1,5 +1,5 @@
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse_lazy
@@ -164,7 +164,7 @@ def buy_voucher(request):
 """
 View for the gamekeeper page where they can view all users and their rank, if a user isn't logged in, they are redirected
 """
-
+@permission_required("game.game_keeper")
 def users(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
@@ -174,7 +174,7 @@ def users(request):
 """
 View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
 """
-
+@permission_required("game.game_keeper")
 def reports(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
