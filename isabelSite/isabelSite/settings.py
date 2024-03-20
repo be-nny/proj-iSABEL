@@ -85,6 +85,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = "isabelSite.wsgi.application"
 
 

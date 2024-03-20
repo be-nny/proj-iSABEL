@@ -4,6 +4,7 @@
 {% load static %}
 {% load users_tags %}
 {% block title %}Users{% endblock %}
+
 {% block content %}
     {% remove request %}
 <div class="table-container">
@@ -22,13 +23,11 @@
             <tr>
                 <th>User</th>
                 <th>Score</th>
-                <th>Remove</th>
             </tr>
             {% for x in myusers %}
             <tr>
                 <td style="color: white;">{{ x.username }}</td>
                 <td style="color: white;" class="counter-count">{{ x.user_xp }}</td>
-                <td style="color: black;"><button class="btn btn-primary">Delete</button>
                 </td>
             </tr>
             {% endfor %}
