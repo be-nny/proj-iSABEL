@@ -33,7 +33,7 @@ class MyUser(AbstractUser):
     leaderboard_position = models.IntegerField(default=-1)
     longest_streak = models.IntegerField(default=0)
     golden_bins_collected = models.IntegerField(default=0)
-    # is_game_keeper = models.BooleanField(default=False)
+    is_game_keeper = models.BooleanField(default=False)
     # is_superuser = models.BooleanField(default=False)
 
     # Define methods to retrieve user information

@@ -169,8 +169,11 @@ View for the gamekeeper page where they can view all users and their rank, if a 
 def users(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
-    else:
+    elif request.user.is_game_keeper:
         return render(request, 'gamekeeper/users.html', {})
+    else:
+        return render(request, 'site/permission-denied.html', {})
+
 
     """
     View for the reports page where the gamekeeper can view reports, if a user isn't logged in, they are redirected
@@ -180,10 +183,12 @@ def users(request):
 def reports(request):
     if not request.user.is_authenticated:
         return userNotLoggedIn(request)
-    else:
+    elif request.user.is_game_keeper:
         mydata = Report.objects.all().order_by('-reported_at').values()
         template = loader.get_template('gamekeeper/reports.html')
         context = {
             'reports': mydata,
         }
         return HttpResponse(template.render(context, request))
+    else:
+        return render(request, 'site/permission-denied.html', {})
