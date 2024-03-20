@@ -64,10 +64,12 @@ div.desc {
 }
 
 .grid-container {
-  display: grid;
-  place-items: center;
-  grid-template-columns: auto auto auto;
-  grid-gap: 10px;
-  background-color: #CBE4DE;
-  padding: 10px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+    grid-template-columns: 33em 33em 33em;
+    grid-gap: 10px;
+    background-color: #CBE4DE;
+    padding: 10px;
 }

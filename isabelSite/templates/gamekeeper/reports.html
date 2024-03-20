@@ -8,13 +8,17 @@
     <div style="padding-top:100px;"></div>
     <div class="grid-container">
         {% for report in reports %}
-            <div class="card" style="width: 20rem;">
-                <i class="bi bi-exclamation-diamond" style="font-size: 10em; text-align: center"></i>
+            <div class="card" style="width: 33rem; height: 33rem" data-aos="flip-left" data-aos-easing="ease-in-out">
+                <i class="bi bi-exclamation-diamond" style="font-size: 8em; text-align: center"></i>
                 <div class="card-body">
                     <h5 class="card-title medium">Report</h5>
                     <h5 class="card-subtitle mb-2 text-bold small"> {{ report.reported_at }}</h5>
-                    <h5 class="card-subtitle mb-4 text-muted tiny"> {{ report.report_id }}</h5>
-                    <p class="card-text">{{ report.message }}</p>
+                    <h5 class="card-subtitle mb-2 text-bold small"> {{ report.report_location }}</h5>
+                    <h5 class="card-subtitle mb-4 text-muted small"> {{ report.report_id }}</h5>
+                    <div style="height: 50px; line-height:2em;overflow:auto;">
+                        <p class="card-text">{{ report.message }}</p>
+                    </div>
+
                     <a href="#" class="btn btn-primary">Resolve</a>
                 </div>
             </div>
