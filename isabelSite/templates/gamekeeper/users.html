@@ -1,24 +1,27 @@
 {# Alicia Henderson 16/3/24 #}
 {% extends "gamekeeper/base.html" %}
 {% load static %}
-{% block title %}Leaderboard{% endblock %}
+{% block title %}Users{% endblock %}
 {% block content %}
 <div class="table-container">
-  <h1 class="subtitle">Leaderboard</h1>
-    <div class="card display_card" data-aos="fade-left" data-aos-easing="ease-in-out" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500" style="border-radius: 40px;">
+    <div style="padding-top: 100px">
         <table class = "table table-bordered table-striped" id="userTable">
             <thead class="thead-dark">
             <tr>
                 <th>User</th>
                 <th>Score</th>
+                <th>Remove</th>
             </tr>
             {% for x in myusers %}
             <tr>
                 <td style="color: white;">{{ x.username }}</td>
                 <td style="color: white;" class="counter-count">{{ x.user_xp }}</td>
+                <td style="color: black;"><button onclick="deletePlayer('{{ x.id }}')">Delete</button>
+                </td>
             </tr>
             {% endfor %}
         </table>
+    </div>
     </div>
 </div>
 <script>
@@ -44,7 +47,8 @@
             }
         }
     }
-
+    function deletePlayer(playerId) {
+        try{}
     window.onload = function () {
         sortTable();
     };
